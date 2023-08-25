@@ -32,7 +32,7 @@
 							<span class="hide-menu">Home</span>
 						</li>
 						<li class="sidebar-item">
-							<a class="sidebar-link" href="./index.html" aria-expanded="false">
+							<a class="sidebar-link active" href="./index.html" aria-expanded="false">
 								<span>
 									<i class="ti ti-layout-dashboard"></i>
 								</span>
@@ -150,7 +150,6 @@
 					</ul>
 					<div class="navbar-collapse justify-content-end px-0" id="navbarNav">
 						<ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-							<a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Download Free</a>
 							<li class="nav-item dropdown">
 								<a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
 									<img src="{{ asset('/images/profile/user-1.jpg') }}" alt="" width="35" height="35" class="rounded-circle">
