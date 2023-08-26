@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Modernize Free</title>
+    <title>Admin | @yield('title')</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/logos/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}" />
 </head>
@@ -33,7 +33,8 @@
                             <span class="hide-menu">Home</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./index.html" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('*dashboard*') ? 'active' : '' }}"
+                                href="{{ route('dashboard.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-layout-dashboard"></i>
                                 </span>
@@ -45,7 +46,8 @@
                             <span class="hide-menu">PRODUCT</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('*baju*') ? 'active' : '' }}"
+                                href="{{ route('baju.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-shirt"></i>
                                 </span>
@@ -130,14 +132,11 @@
             </header>
             <!--  Header End -->
             <div class="container-fluid">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title fw-semibold mb-4">Sample Page</h5>
-                        <p class="mb-0">This is a sample page </p>
-                    </div>
-                </div>
+                @yield('kontent')
             </div>
         </div>
+
+
     </div>
     <script src="{{ asset('libs/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>

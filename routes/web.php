@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BajuAdminController;
+use App\Http\Controllers\DashboardAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('');
 });
+
+
+//admin dashboard route
+Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard.index');
+
+// BAJU ADMIN
+Route::get('/baju', [BajuAdminController::class, 'index'])->name('baju.index');
