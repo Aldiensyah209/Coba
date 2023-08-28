@@ -1,12 +1,12 @@
 @extends('admin.master')
-@section('title', 'Baju')
+@section('title', 'Celana')
 @section('kontent')
 
 <div class="card w-100">
   <div class="card-body p-4">
-    <div class="d-flex align-items-center justify-content-between mb-9">
-      <h5 class="card-title fw-semibold mb-0">Daftar Baju</h5>
-      <a href="#" class="btn btn-primary"><i class="ti ti-plus me-2"></i>Tambah Baju</a>
+    <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+      <h5 class="card-title fw-semibold mb-0">Daftar Celana</h5>
+      <a href="#" class="btn btn-primary"><i class="ti ti-plus me-2"></i>Tambah Celana</a>
     </div>
     <div class="table-responsive">
       <table class="table text-nowrap mb-0 align-middle">

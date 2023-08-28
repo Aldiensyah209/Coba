@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\AksesorisAdminController;
 use App\Http\Controllers\BajuAdminController;
+use App\Http\Controllers\CelanaAdminController;
 use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\LoginAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,12 +19,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('');
-});
+    return view('index');
+})->name('utama');
 
 
-//admin dashboard route
-Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard.index');
-
-// BAJU ADMIN
-Route::get('/baju', [BajuAdminController::class, 'index'])->name('baju.index');
+// Admin Route
+Route::get('/admin', [LoginAdminController::class, 'index'])->name('login');
+Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
+Route::get('/baju', [BajuAdminController::class, 'index'])->name('baju');
+Route::get('/celana', [CelanaAdminController::class, 'index'])->name('celana');
+Route::get('/aksesoris', [AksesorisAdminController::class, 'index'])->name('aksesoris');
