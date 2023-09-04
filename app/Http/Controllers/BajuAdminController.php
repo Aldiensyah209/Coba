@@ -3,64 +3,74 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use App\Models\Baju;
 
 class BajuAdminController extends Controller
 {
     public function index()
     {
-        $baju = Baju::all();
-        return view('admin.layouts.baju.index', compact('baju'));
-    }
-
-    public function create()
-    {
-        return view('baju.create');
+        $baju = Baju::paginate(5);
+        return view('admin.layouts.baju', compact('baju'));
     }
 
     public function store(Request $request)
     {
-        $baju = new Baju;
-        $baju->nama_baju = $request->input('nama_baju');
-        $baju->harga = $request->input('harga');
-        $baju->deskripsi = $request->input('deskripsi');
+        $request->validate([
+            'nama_baju' => 'required',
+            'deskripsi' => 'required',
+            'harga' => 'required|numeric',
+            'gambar_baju' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
 
-        if ($request->hasFile('gambar_baju')) {
-            $baju->gambar_baju = $request->file('gambar_baju')->store('gambar_baju', 'public');
-        }
+        $imageName = date('YmdHis') . "." . $request->gambar_baju->Extension();
+        $request->gambar_baju->move(public_path('images/post/'), $imageName);
+
+        $baju = new Baju([
+            'nama_baju' => $request->get('nama_baju'),
+            'deskripsi' => $request->get('deskripsi'),
+            'harga' => $request->get('harga'),
+            'gambar_baju' => $imageName,
+        ]);
 
         $baju->save();
 
-        return redirect()->route('baju.index')->with('success', 'Baju berhasil ditambahkan.');
+        return redirect()->back()->with('success', 'Baju berhasil ditambahkan.');
     }
 
-    public function edit($id)
+    public function getById($id)
     {
         $baju = Baju::findOrFail($id);
-        return view('baju.edit', compact('baju'));
+        return response()->json($baju, 200);
     }
 
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'nama_baju' => 'required',
-            'harga' => 'numeric|nullable',
-            'deskripsi' => 'nullable',
-            'gambar_baju' => 'image|mimes:jpeg,png,jpg,gif|max:2048|nullable',
+        $request->validate([
+            'edit_nama_baju' => 'required',
+            'edit_deskripsi' => 'required',
+            'edit_harga' => 'required|numeric',
+            'edit_gambar_baju' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
-        $baju = Baju::findOrFail($id);
-        $baju->nama_baju = $validatedData['nama_baju'];
-        $baju->harga = $validatedData['harga'];
-        $baju->deskripsi = $validatedData['deskripsi'];
+        $baju = Baju::find($id);
 
-        if ($request->hasFile('gambar_baju')) {
-            $baju->gambar_baju = $request->file('gambar_baju')->store('gambar_baju', 'public');
+        $baju->nama_baju = $request->get('edit_nama_baju');
+        $baju->deskripsi = $request->get('edit_deskripsi');
+        $baju->harga = $request->get('edit_harga');
+
+        if ($request->hasFile('edit_gambar_baju')) {
+            // Delete old image
+            File::delete(public_path('images/post/' . $baju->gambar_baju));
+
+            $imageName = date('YmdHis') . "." . $request->edit_gambar_baju->Extension();
+            $request->edit_gambar_baju->move(public_path('images/post/'), $imageName);
+            $baju->gambar_baju = $imageName;
         }
 
         $baju->save();
 
-        return redirect()->route('baju.edit', $baju->id)->with('success', 'Baju berhasil diperbarui.');
+        return response()->json($baju, 200);
     }
 
     public function destroy($id)
@@ -68,6 +78,9 @@ class BajuAdminController extends Controller
         $baju = Baju::findOrFail($id);
         $baju->delete();
 
-        return redirect()->route('baju.index')->with('success', 'Baju berhasil dihapus.');
+        // Delete old image
+        File::delete(public_path('images/post/' . $baju->gambar_baju));
+
+        return redirect()->back()->with('success', 'Baju berhasil dihapus.');
     }
 }
