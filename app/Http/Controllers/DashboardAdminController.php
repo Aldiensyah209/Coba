@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Baju;
 
 class DashboardAdminController extends Controller
 {
     public function index()
     {
-        return view('admin.layouts.dashboard');
+        $baju = Baju::all();
+        return view('admin.layouts.dashboard', compact('baju'));
     }
 }
