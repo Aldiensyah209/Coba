@@ -3,38 +3,36 @@
 @section('kontent')
 
 <div class="row">
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-body p-4">
-        <h5 class="card-title mb-9 fw-semibold">Total Baju</h5>
-        <div class="row align-items-center">
-          <div class="col-8">
-            <h4 class="fw-semibold mb-3">{{ count($baju) ? count($baju) : 0 }}</h4>
-          </div>
-          <div class="col-4">
-            <div class="d-flex justify-content-center">
-              <img src="images/logos/favicon.png" alt="Icon 2" class="mr-2" width="30" height="30">
-            </div>
-          </div>
+  <div class="col-md-3 col-sm-4">
+    <div class="card bg-danger" style="--bs-bg-opacity: .1;">
+      <div class="card-body">
+        <div class="d-flex justify-content-center mb-9">
+          <img src="images/logos/Baju.svg" alt="Icon 2" width="80" height="70">
         </div>
+        <h4 class="mb-1 fw-semibold text-danger text-center">Baju</h4>
+        <h2 class="mb-0 fw-semibold text-danger text-center">{{ count($baju) ? count($baju) : 0 }}</h2>
       </div>
     </div>
   </div>
-
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-body p-4">
-        <h5 class="card-title mb-9 fw-semibold">Yearly Breakup</h5>
-        <div class="row align-items-center">
-          <div class="col-8">
-            <h4 class="fw-semibold mb-3">$36,358</h4>
-          </div>
-          <div class="col-4">
-            <div class="d-flex justify-content-center">
-              <img src="images/logos/favicon.png" alt="Icon 2" class="mr-2" width="30" height="30">
-            </div>
-          </div>
+  <div class="col-md-3 col-sm-4">
+    <div class="card bg-primary" style="--bs-bg-opacity: .1;">
+      <div class="card-body">
+        <div class="d-flex justify-content-center mb-9">
+          <img src="images/logos/Celana.svg" alt="Icon 2" width="80" height="70">
         </div>
+        <h4 class="mb-1 fw-semibold text-primary text-center">Celana</h4>
+        <h2 class="mb-0 fw-semibold text-primary text-center">{{ count($baju) ? count($baju) : 0 }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-4">
+    <div class="card bg-warning" style="--bs-bg-opacity: .1;">
+      <div class="card-body">
+        <div class="d-flex justify-content-center mb-9">
+          <img src="images/logos/Aksesoris.svg" alt="Icon 2" width="80" height="70">
+        </div>
+        <h4 class="mb-1 fw-semibold text-warning text-center">Aksesoris</h4>
+        <h2 class="mb-0 fw-semibold text-warning text-center">{{ count($baju) ? count($baju) : 0 }}</h2>
       </div>
     </div>
   </div>
