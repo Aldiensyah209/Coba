@@ -47,32 +47,22 @@
                             <span class="hide-menu">PRODUCT</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Request::is('*baju*') ? 'active' : '' }}"
-                                href="{{ route('baju.index') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('*xuzu*') ? 'active' : '' }}"
+                                href="{{ route('xuzu.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-shirt"></i>
                                 </span>
-                                <span class="hide-menu">Baju</span>
+                                <span class="hide-menu">Xuzu</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Request::is('*celana*') ? 'active' : '' }}"
-                                href="{{ route('celana') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('*bintang-konveksi*') ? 'active' : '' }}"
+                                href="{{ route('bk.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-shirt"></i>
                                 </span>
-                                <span class="hide-menu">Celana</span>
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a class="sidebar-link {{ Request::is('*aksesoris*') ? 'active' : '' }}"
-                                href="{{ route('aksesoris') }}" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-hanger"></i>
-                                </span>
-                                <span class="hide-menu">Aksesoris</span>
+                                <span class="hide-menu">Bintang Konveksi</span>
                             </a>
                         </li>
 
@@ -116,9 +106,9 @@
                                         <a href="javascript:void(0)"
                                             class="d-flex align-items-center gap-2 dropdown-item">
                                             <i class="ti ti-user fs-6"></i>
-                                            <p class="mb-0 fs-3">My Profile</p>
+                                            <p class="mb-0 fs-3">{{ auth()->user()->name }}</p>
                                         </a>
-                                        <a href="{{ route('login') }}"
+                                        <a href="{{ route('logout') }}"
                                             class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                                     </div>
                                 </div>

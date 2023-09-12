@@ -21,14 +21,18 @@
                 <a href="#" class="text-nowrap logo-img text-center d-block py-3 w-100">
                   <h1>Login Admin</h1>
                 </a>
-                <form>
+                <form action="{{ route('login') }}" method="POST">
+                  @csrf
+                  @method('POST')
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Username</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="exampleInputEmail1" class="form-label @error('name') is-invalid @enderror">Username</label>
+                    <input type="text" class="form-control" id="inputName" name="name">
+                    <div class="invalid-feedback">@error('name') {{$message}} @enderror</div>
                   </div>
                   <div class="mb-4">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label for="exampleInputPassword1" class="form-label @error('password') is-invalid @enderror">Password</label>
+                    <input type="password" class="form-control" id="inputPassword" name="password">
+                    <div class="invalid-feedback">@error('password') {{$message}} @enderror</div>
                   </div>
                   <div class="d-flex align-items-center justify-content-between mb-4">
                     <div class="form-check">
@@ -37,9 +41,8 @@
                         Remeber this Device
                       </label>
                     </div>
-                    <a class="text-primary fw-bold" href="#">Forgot Password ?</a>
                   </div>
-                  <a href="{{ route('dashboard') }}" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</a>
+                  <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</button>
                 </form>
               </div>
             </div>
