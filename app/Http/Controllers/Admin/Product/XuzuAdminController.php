@@ -1,21 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Product;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Models\Xuzu;
-use Illuminate\Support\Facades\Auth;
 
 class XuzuAdminController extends Controller
 {
     public function __construct()
     {
-        if (Auth::check()) {
-            return view('admin.layouts.xuzu');
-        } else {
-            return view('admin.auth.login');
-        }
+        $this->middleware('auth');
     }
 
     public function index()
@@ -34,7 +30,7 @@ class XuzuAdminController extends Controller
         ]);
 
         $imageName = date('YmdHis') . "." . $request->gambar->Extension();
-        $request->gambar->move(public_path('images/post/'), $imageName);
+        $request->gambar->move(public_path('images/post/product/'), $imageName);
 
         $produk = new Xuzu([
             'nama' => $request->get('nama'),
@@ -71,10 +67,10 @@ class XuzuAdminController extends Controller
 
         if ($request->hasFile('edit_gambar')) {
             // Delete old image
-            File::delete(public_path('images/post/' . $produk->gambar));
+            File::delete(public_path('images/post/product/' . $produk->gambar));
 
             $imageName = date('YmdHis') . "." . $request->edit_gambar->Extension();
-            $request->edit_gambar->move(public_path('images/post/'), $imageName);
+            $request->edit_gambar->move(public_path('images/post/product/'), $imageName);
             $produk->gambar = $imageName;
         }
 
@@ -89,7 +85,7 @@ class XuzuAdminController extends Controller
         $produk->delete();
 
         // Delete old image
-        File::delete(public_path('images/post/' . $produk->gambar));
+        File::delete(public_path('images/post/product/' . $produk->gambar));
 
         return redirect()->back()->with('success', 'Produk berhasil dihapus.');
     }

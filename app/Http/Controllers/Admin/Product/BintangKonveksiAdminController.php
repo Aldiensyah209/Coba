@@ -1,21 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Product;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Models\BintangKonveksi;
-use Illuminate\Support\Facades\Auth;
 
 class BintangKonveksiAdminController extends Controller
 {
     public function __construct()
     {
-        if (Auth::check()) {
-            return view('admin.layouts.bintang');
-        } else {
-            return view('admin.auth.login');
-        }
+        $this->middleware('auth');
     }
 
     public function index()
@@ -34,7 +30,7 @@ class BintangKonveksiAdminController extends Controller
         ]);
 
         $imageName = date('YmdHis') . "." . $request->gambar->Extension();
-        $request->gambar->move(public_path('images/post/'), $imageName);
+        $request->gambar->move(public_path('images/post/product/'), $imageName);
 
         $produk = new BintangKonveksi([
             'nama_bk' => $request->get('nama'),
@@ -71,10 +67,10 @@ class BintangKonveksiAdminController extends Controller
 
         if ($request->hasFile('edit_gambar')) {
             // Delete old image
-            File::delete(public_path('images/post/' . $produk->gambar_bk));
+            File::delete(public_path('images/post/product/' . $produk->gambar_bk));
 
             $imageName = date('YmdHis') . "." . $request->edit_gambar->Extension();
-            $request->edit_gambar->move(public_path('images/post/'), $imageName);
+            $request->edit_gambar->move(public_path('images/post/product/'), $imageName);
             $produk->gambar_bk = $imageName;
         }
 
@@ -89,7 +85,7 @@ class BintangKonveksiAdminController extends Controller
         $produk->delete();
 
         // Delete old image
-        File::delete(public_path('images/post/' . $produk->gambar_bk));
+        File::delete(public_path('images/post/product/' . $produk->gambar_bk));
 
         return redirect()->back()->with('success', 'Produk berhasil dihapus.');
     }

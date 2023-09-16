@@ -1,27 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Xuzu;
 use App\Models\BintangKonveksi;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class DashboardAdminController extends Controller
 {
     public function __construct()
     {
-        if (Auth::check()) {
-            return view('admin.layouts.dashboard');
-        } else {
-            return view('admin.auth.login');
-        }
+        $this->middleware('auth');
     }
 
     public function index()
     {
-        $xuzu = Xuzu::all();
-        $bintangKonveksi = BintangKonveksi::all();
+        $xuzu = Xuzu::count();
+        $bintangKonveksi = BintangKonveksi::count();
         return view('admin.layouts.dashboard', compact('xuzu', 'bintangKonveksi'));
     }
 }

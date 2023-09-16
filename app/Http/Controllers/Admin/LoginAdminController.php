@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginAdminController extends Controller
 {
@@ -16,15 +18,19 @@ class LoginAdminController extends Controller
     {
         $credentials = $request->validate([
             'name' => ['required'],
-            'password' => ['required']
+            'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        $remember_me = $request->has('remember_checkbox') ? true : false; 
+
+        if (Auth::attempt($credentials, $remember_me)) {
             $request->session()->regenerate();
+
             return redirect()->intended('dashboard');
         }
 
-        return back()->with('loginError', 'Login failed');
+        Session::flash('error', 'Username atau Password Salah');
+        return redirect('admin')->withErrors('loginError', 'Login failed');
     }
 
     public function logout(Request $request)
