@@ -1,11 +1,20 @@
 $(document).ready(function (e) {
     const SITEURL = window.location.origin;
     let dataId;
+    let valuesTambahModal = ["BajuModal", "BajuModalBK", "KontenModal", "KontenModalAbout"];
 
     $("tbody tr td #buttonEdit").on("click", function () {
         dataId = $(this).attr("data-id");
     });
 
+    $.each(valuesTambahModal, function (index, item) {
+        $("#tambah" + item).on("hidden.bs.modal", function (event) {
+            event.preventDefault();
+            $("#createForm").trigger("reset");
+        });
+    });
+
+    // UPDATE XUZU
     $("#editBajuModal").on("show.bs.modal", function (e) {
         const id = $(e.relatedTarget).data("id");
 
@@ -25,11 +34,6 @@ $(document).ready(function (e) {
                 alert("Error: " + data.responseJSON.message);
             },
         });
-    });
-
-    $("#tambahBajuModal").on("hidden.bs.modal", function (e) {
-        e.preventDefault();
-        $("#createForm").trigger("reset");
     });
 
     $("#updateForm").on("submit", function (e) {
@@ -62,10 +66,9 @@ $(document).ready(function (e) {
         });
     });
 
+    // UPDATE BINTANG KONVEKSI
     $("#editBajuModalBK").on("show.bs.modal", function (e) {
         const id = $(e.relatedTarget).data("id");
-
-        console.log(id);
 
         $.ajax({
             url: SITEURL + "/bintang-konveksi/" + id,
@@ -83,11 +86,6 @@ $(document).ready(function (e) {
                 alert("Error: " + data.responseJSON.message);
             },
         });
-    });
-
-    $("#tambahBajuModalBK").on("hidden.bs.modal", function (e) {
-        e.preventDefault();
-        $("#createForm").trigger("reset");
     });
 
     $("#updateFormBK").on("submit", function (e) {
@@ -111,6 +109,106 @@ $(document).ready(function (e) {
             success: function (data) {
                 $("#updateFormBK").trigger("reset");
                 $("#editBajuModalBK").modal("hide");
+
+                location.reload();
+            },
+            error: function (data) {
+                alert("Error: " + data.responseJSON.message);
+            },
+        });
+    });
+
+    // UPDATE HOME
+    $("#editKontenModal").on("show.bs.modal", function (e) {
+        const id = $(e.relatedTarget).data("id");
+
+        $.ajax({
+            url: SITEURL + "/home-content/" + id,
+            type: "GET",
+            dataType: "json",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                $("#edit_judul").val(data.judul);
+                $("#edit_deskripsi").text(data.deskripsi);
+            },
+            error: function (data) {
+                alert("Error: " + data.responseJSON.message);
+            },
+        });
+    });
+
+    $("#updateFormKonten").on("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const token = $('meta[name="csrf-token"]').attr("content");
+        const url = SITEURL + "/home-content/update/" + dataId;
+
+        $.ajax({
+            type: "POST",
+            header: {
+                "X-CSRF-TOKEN": token,
+            },
+            url: url,
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                $("#updateFormKonten").trigger("reset");
+                $("#editKontenModal").modal("hide");
+
+                location.reload();
+            },
+            error: function (data) {
+                alert("Error: " + data.responseJSON.message);
+            },
+        });
+    });
+
+    // UPDATE ABOUT
+    $("#editKontenModalAbout").on("show.bs.modal", function (e) {
+        const id = $(e.relatedTarget).data("id");
+
+        $.ajax({
+            url: SITEURL + "/about/" + id,
+            type: "GET",
+            dataType: "json",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                $("#edit_judul").val(data.judul);
+                $("#edit_deskripsi").text(data.deskripsi);
+            },
+            error: function (data) {
+                alert("Error: " + data.responseJSON.message);
+            },
+        });
+    });
+
+    $("#updateFormKontenAbout").on("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const token = $('meta[name="csrf-token"]').attr("content");
+        const url = SITEURL + "/about/update/" + dataId;
+
+        $.ajax({
+            type: "POST",
+            header: {
+                "X-CSRF-TOKEN": token,
+            },
+            url: url,
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                $("#updateFormKontenAbout").trigger("reset");
+                $("#editKontenModalAbout").modal("hide");
 
                 location.reload();
             },

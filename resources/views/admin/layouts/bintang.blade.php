@@ -49,7 +49,7 @@
             </td>
             <td class="border-bottom-0">
               @if ($item->gambar_bk)
-              <img src="{{ asset('images/post/' . $item->gambar_bk) }}" alt="{{ $item->gambar }}" width="100">
+              <img src="{{ asset('images/post/product/' . $item->gambar_bk) }}" alt="{{ $item->gambar_bk }}" width="100">
               @else
               Tidak ada gambar
               @endif
@@ -61,7 +61,6 @@
               <button type="button" class="btn btn-warning m-1" id="buttonEdit" data-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#editBajuModalBK">
                 <i class="ti ti-edit"></i>
               </button>
-
               <form action="{{ route('bk.destroy', $item->id) }}" method="POST">
                 @csrf
                 @method('DELETE')

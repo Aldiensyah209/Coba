@@ -49,7 +49,7 @@
             </td>
             <td class="border-bottom-0">
               @if ($item->gambar)
-              <img src="{{ asset('images/post/' . $item->gambar) }}" alt="{{ $item->gambar }}" width="100">
+              <img src="{{ asset('images/post/product/' . $item->gambar) }}" alt="{{ $item->gambar }}" width="100">
               @else
               Tidak ada gambar
               @endif

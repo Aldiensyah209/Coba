@@ -19,7 +19,7 @@
             <div class="card mb-0">
               <div class="card-body">
                 <a href="#" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                  <h1>Login Admin</h1>
+                  <h1>Xuzu Admin</h1>
                 </a>
                 <form action="{{ route('login') }}" method="POST">
                   @csrf
@@ -36,12 +36,17 @@
                   </div>
                   <div class="d-flex align-items-center justify-content-between mb-4">
                     <div class="form-check">
-                      <input class="form-check-input primary" type="checkbox" value="" id="flexCheckChecked" checked>
+                      <input class="form-check-input primary" type="checkbox" id="flexCheckChecked" name="remember_checkbox">
                       <label class="form-check-label text-dark" for="flexCheckChecked">
-                        Remeber this Device
+                        Remember this device
                       </label>
                     </div>
                   </div>
+                  @if(session('error'))
+                  <div class="alert alert-danger">
+                    <b>Opps!</b> {{session('error')}}
+                  </div>
+                  @endif
                   <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</button>
                 </form>
               </div>

@@ -1,12 +1,11 @@
 <?php
 
-use App\Http\Controllers\AksesorisAdminController;
-use App\Http\Controllers\BajuAdminController;
-use App\Http\Controllers\BintangKonveksiAdminController;
-use App\Http\Controllers\CelanaAdminController;
-use App\Http\Controllers\DashboardAdminController;
-use App\Http\Controllers\LoginAdminController;
-use App\Http\Controllers\XuzuAdminController;
+use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\Admin\LandingPage\AboutAdminController;
+use App\Http\Controllers\Admin\LandingPage\HomeAdminController;
+use App\Http\Controllers\Admin\LoginAdminController;
+use App\Http\Controllers\Admin\Product\XuzuAdminController;
+use App\Http\Controllers\Admin\Product\BintangKonveksiAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,27 +19,53 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// WEB UTAMA
 Route::get('/', function () {
     return view('index');
 })->name('utama');
 
 
-// Admin Route
-Route::get('/admin', [LoginAdminController::class, 'index'])->name('admin');
-Route::post('/login', [LoginAdminController::class, 'authenticate'])->name('login');
-Route::get('/logout', [LoginAdminController::class, 'logout'])->name('logout');
+// ADMIN ROUTE
+Route::get('dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
 
-Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard')->middleware('auth');;
+Route::controller(XuzuAdminController::class)->group(function () {
+    Route::get('xuzu', 'index')->name('xuzu.index');
+    Route::get('xuzu/{id}', 'getById')->name('xuzu.id');
+    Route::post('xuzu/create', 'store')->name('xuzu.store');
+    Route::put('xuzu/update/{id}', 'update')->name('xuzu.update');
+    Route::delete('xuzu/delete/{id}', 'destroy')->name('xuzu.destroy');
+});
 
-Route::get('/xuzu', [XuzuAdminController::class, 'index'])->name('xuzu.index')->middleware('auth');;
-Route::get('/xuzu/{id}', [XuzuAdminController::class, 'getById'])->name('xuzu.id');
-Route::post('/xuzu/create', [XuzuAdminController::class, 'store'])->name('xuzu.store');
-Route::put('/xuzu/update/{id}', [XuzuAdminController::class, 'update'])->name('xuzu.update');
-Route::delete('/xuzu/delete/{id}', [XuzuAdminController::class, 'destroy'])->name('xuzu.destroy');
+Route::controller(BintangKonveksiAdminController::class)->group(function () {
+    Route::get('bintang-konveksi', 'index')->name('bk.index');
+    Route::get('bintang-konveksi/{id}', 'getById')->name('bk.id');
+    Route::post('bintang-konveksi/create', 'store')->name('bk.store');
+    Route::put('bintang-konveksi/update/{id}', 'update')->name('bk.update');
+    Route::delete('bintang-konveksi/delete/{id}', 'destroy')->name('bk.destroy');
+});
 
-Route::get('/bintang-konveksi', [BintangKonveksiAdminController::class, 'index'])->name('bk.index')->middleware('auth');;
-Route::get('/bintang-konveksi/{id}', [BintangKonveksiAdminController::class, 'getById'])->name('bk.id');
-Route::post('/bintang-konveksi/create', [BintangKonveksiAdminController::class, 'store'])->name('bk.store');
-Route::put('/bintang-konveksi/update/{id}', [BintangKonveksiAdminController::class, 'update'])->name('bk.update');
-Route::delete('/bintang-konveksi/delete/{id}', [BintangKonveksiAdminController::class, 'destroy'])->name('bk.destroy');
+// AUTH
+Route::controller(LoginAdminController::class)->group(function () {
+    Route::get('admin', 'index')->name('admin')->middleware('isLogin');
+    Route::post('login', 'authenticate')->name('login');
+    Route::get('logout', 'logout')->name('logout');
+});
+
+Route::controller(HomeAdminController::class)->group(function () {
+    Route::get('home', 'index')->name('homeAdmin.index');
+    Route::get('home-content/{id}', 'getByIdKonten')->name('homeContent.id');
+    Route::post('home-content/create', 'storeKonten')->name('homeContent.store');
+    Route::put('home-content/update/{id}', 'updateKonten')->name('homeContent.update');
+    Route::delete('home-content/delete/{id}', 'destroyKonten')->name('homeContent.destroy');
+    Route::post('homeImage/create', 'storeGambar')->name('homeImage.store');
+    Route::delete('homeImage/delete/{id}', 'destroyGambar')->name('homeImage.destroy');
+});
+
+Route::controller(AboutAdminController::class)->group(function () {
+    Route::get('about', 'index')->name('aboutAdmin.index');
+    Route::get('about/{id}', 'getById')->name('aboutAdmin.id');
+    Route::post('about/create', 'store')->name('aboutAdmin.store');
+    Route::put('about/update/{id}', 'update')->name('aboutAdmin.update');
+    Route::delete('about/delete/{id}', 'destroy')->name('aboutAdmin.destroy');
+});
 

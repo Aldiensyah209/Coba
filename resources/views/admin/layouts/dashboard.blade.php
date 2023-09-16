@@ -10,7 +10,7 @@
           <img src="images/logos/Baju.svg" alt="Icon 2" width="80" height="70">
         </div>
         <h4 class="mb-1 fw-semibold text-danger text-center">Xuzu</h4>
-        <h2 class="mb-0 fw-semibold text-danger text-center">{{ count($xuzu) ? count($xuzu) : 0 }}</h2>
+        <h2 class="mb-0 fw-semibold text-danger text-center">{{ $xuzu ? $xuzu : 0 }}</h2>
       </div>
     </div>
   </div>
@@ -21,7 +21,7 @@
           <img src="images/logos/Celana.svg" alt="Icon 2" width="80" height="70">
         </div>
         <h4 class="mb-1 fw-semibold text-primary text-center">Bintang Konveksi</h4>
-        <h2 class="mb-0 fw-semibold text-primary text-center">{{ count($bintangKonveksi) ? count($bintangKonveksi) : 0 }}</h2>
+        <h2 class="mb-0 fw-semibold text-primary text-center">{{ $bintangKonveksi ? $bintangKonveksi : 0 }}</h2>
       </div>
     </div>
   </div>
