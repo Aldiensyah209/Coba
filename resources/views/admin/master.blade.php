@@ -19,7 +19,7 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="{{ route('utama') }}" class="text-nowrap logo-img">
+                    <a href="{{ route('utama') }}" class="text-nowrap logo-img" target="_blank" rel="noopener">
                         <img src="{{ asset('images/logos/dark-logo.svg') }}" width="180" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -61,7 +61,7 @@
                             <a class="sidebar-link {{ Request::is('*bintang-konveksi*') ? 'active' : '' }}"
                                 href="{{ route('bk.index') }}" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-shirt"></i>
+                                    <i class="ti ti-sock"></i>
                                 </span>
                                 <span class="hide-menu">Bintang Konveksi</span>
                             </a>
@@ -125,12 +125,6 @@
                             <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse"
                                 href="javascript:void(0)">
                                 <i class="ti ti-menu-2"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-icon-hover" href="javascript:void(0)">
-                                <i class="ti ti-bell-ringing"></i>
-                                <div class="notification bg-primary rounded-circle"></div>
                             </a>
                         </li>
                     </ul>

@@ -73,6 +73,9 @@
         <thead class="text-dark fs-4">
           <tr>
             <th class="border-bottom-0">
+              <h6 class="fw-semibold mb-0">id</h6>
+            </th>
+            <th class="border-bottom-0">
               <h6 class="fw-semibold mb-0">Gambar</h6>
             </th>
             <th class="border-bottom-0">
@@ -84,6 +87,9 @@
           @if (count($gambar))
           @foreach ($gambar as $item)
           <tr>
+            <td class="border-bottom-0">
+              <h6 class="fw-normal mb-0">{{ $item->id }}</h6>
+            </td>
             <td class="border-bottom-0">
               @if ($item->gambar)
               <img src="{{ asset('images/post/landingPage/' . $item->gambar) }}" alt="{{ $item->gambar }}" width="250">
@@ -117,7 +123,7 @@
         <h5 class="modal-title" id="tambahKontenModalLabel">Tambah Konten</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form id="createForm" action="{{ route('homeContent.store') }}" method="POST" >
+      <form id="createForm" action="{{ route('homeContent.store') }}" method="POST">
         @csrf
         @method('POST')
         <div class="modal-body">
