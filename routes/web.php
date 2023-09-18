@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\LandingPage\AboutAdminController;
 use App\Http\Controllers\Admin\LandingPage\HomeAdminController;
+use App\Http\Controllers\Admin\LandingPage\SmartBuyAdminController;
+use App\Http\Controllers\Admin\LandingPage\TestimoniAdminController;
 use App\Http\Controllers\Admin\LoginAdminController;
 use App\Http\Controllers\Admin\Product\XuzuAdminController;
 use App\Http\Controllers\Admin\Product\BintangKonveksiAdminController;
@@ -69,3 +71,18 @@ Route::controller(AboutAdminController::class)->group(function () {
     Route::delete('about/delete/{id}', 'destroy')->name('aboutAdmin.destroy');
 });
 
+Route::controller(SmartBuyAdminController::class)->group(function () {
+    Route::get('smartbuy', 'index')->name('smartbuyAdmin.index');
+    Route::get('smartbuy/{id}', 'getById')->name('smartbuyAdmin.id');
+    Route::post('smartbuy/create', 'store')->name('smartbuyAdmin.store');
+    Route::put('smartbuy/update/{id}', 'update')->name('smartbuyAdmin.update');
+    Route::delete('smartbuy/delete/{id}', 'destroy')->name('smartbuyAdmin.destroy');
+});
+
+Route::controller(TestimoniAdminController::class)->group(function () {
+    Route::get('testimoni', 'index')->name('testimoniAdmin.index');
+    Route::get('testimoni/{id}', 'getById')->name('testimoniAdmin.id');
+    Route::post('testimoni/create', 'store')->name('testimoniAdmin.store');
+    Route::put('testimoni/update/{id}', 'update')->name('testimoniAdmin.update');
+    Route::delete('testimoni/delete/{id}', 'destroy')->name('testimoniAdmin.destroy');
+});
