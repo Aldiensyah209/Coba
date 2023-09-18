@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 // WEB UTAMA
 Route::get('/', function () {
-    return view('index');
+    return view('LandingPage.index');
 })->name('utama');
 
 
