@@ -38,8 +38,6 @@ class TestimoniAdminController extends Controller
             'keterangan' => $request->get('keterangan'),
         ]);
 
-
-
         $kontenttestimoni->save();
 
         return redirect()->back()->with('success', 'Konten berhasil ditambahkan.');
@@ -61,7 +59,6 @@ class TestimoniAdminController extends Controller
         ]);
 
         $kontenttestimoni = Testimoni::find($id);
-
 
         $kontenttestimoni->keterangan = $request->get('edit_keterangan');
 
@@ -85,7 +82,7 @@ class TestimoniAdminController extends Controller
         $kontenttestimoni->delete();
 
         // Delete old image
-        File::delete(public_path('images/post/product/' . $kontenttestimoni->gambar));
+        File::delete(public_path('images/post/landingPage/testimoni/' . $kontenttestimoni->gambar));
 
         return redirect()->back()->with('success', 'Konten berhasil dihapus.');
     }

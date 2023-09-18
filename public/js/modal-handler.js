@@ -1,7 +1,14 @@
 $(document).ready(function (e) {
     const SITEURL = window.location.origin;
     let dataId;
-    let valuesTambahModal = ["BajuModal", "BajuModalBK", "KontenModal", "KontenModalAbout",  "KontenModalSmartbuy"];
+    let valuesTambahModal = [
+        "BajuModal",
+        "BajuModalBK",
+        "KontenModal",
+        "KontenModalAbout",
+        "KontenModalSmartbuy",
+        "KontenModalTestimoni",
+    ];
 
     $("tbody tr td #buttonEdit").on("click", function () {
         dataId = $(this).attr("data-id");
@@ -280,7 +287,6 @@ $(document).ready(function (e) {
             contentType: false,
             processData: false,
             success: function (data) {
-
                 $("#edit_keterangan").val(data.keterangan);
             },
             error: function (data) {

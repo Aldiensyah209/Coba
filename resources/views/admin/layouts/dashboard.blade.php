@@ -27,13 +27,13 @@
         </div>
 
         <div class="col-md-3 col-sm-4">
-            <div class="card bg-primary" style="--bs-bg-opacity: .1;">
+            <div class="card bg-warning" style="--bs-bg-opacity: .1;">
                 <div class="card-body">
                     <div class="d-flex justify-content-center mb-9">
-                        <img src="images/logos/Celana.svg" alt="Icon 2" width="80" height="70">
+                        <img src="images/logos/people.svg" alt="Icon 2" width="80" height="70">
                     </div>
-                    <h4 class="mb-1 fw-semibold text-primary text-center">Testimoni</h4>
-                    <h2 class="mb-0 fw-semibold text-primary text-center">{{ $testimoni ? $testimoni : 0 }}
+                    <h4 class="mb-1 fw-semibold text-warning text-center">Testimoni</h4>
+                    <h2 class="mb-0 fw-semibold text-warning text-center">{{ $testimoni ? $testimoni : 0 }}
                     </h2>
                 </div>
             </div>
