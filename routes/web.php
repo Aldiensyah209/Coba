@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\LandingPage\TestimoniAdminController;
 use App\Http\Controllers\Admin\LoginAdminController;
 use App\Http\Controllers\Admin\Product\XuzuAdminController;
 use App\Http\Controllers\Admin\Product\BintangKonveksiAdminController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,10 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // WEB UTAMA
-Route::get('/', function () {
-    return view('LandingPage.index');
-})->name('utama');
-
+Route::get('/', [HomeController::class, 'index'])->name('utama');
 
 // ADMIN ROUTE
 Route::get('dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
