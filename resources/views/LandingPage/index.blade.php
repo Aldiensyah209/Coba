@@ -12,48 +12,42 @@
 
 <body>
     {{-- NavBar --}}
-    <header class="pb-5">
-        <nav class="navbar navbar-expand-lg bg-light p-3 bg-body">
-            <div class="container">
-                <a class="navbar-brand" href="#"><strong>XUZU</strong></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Colection
-                            </a>
-                            <ul class="dropdown-menu dropdown-colection p-0">
-                                <li><a class="dropdown-item" href="#">Xuzu</a></li>
-                                <li><a class="dropdown-item" href="#">Bintang Konveksi</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Smart Buy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Testimoni</a>
-                        </li>
-                    </ul>
-                </div>
+    <header class="py-2 mb-5">
+        <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="#"><strong>XUZU</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Colection
+                        </a>
+                        <ul class="dropdown-menu dropdown-colection p-0">
+                            <li><a class="dropdown-item" href="#">Xuzu</a></li>
+                            <li><a class="dropdown-item" href="#">Bintang Konveksi</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Smart Buy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Testimoni</a>
+                    </li>
+                </ul>
             </div>
         </nav>
+        </div>
     </header>
     {{-- Akhir Navbar --}}
     <!--  Main Content -->
-    <div class="container">
-        @yield('kontent')
-    </div>
-
-
+    @yield('kontent')
     <!--  Main Content End -->
-
-    <!-- Main Wrapper End -->
 
     <script src="{{ asset('libs/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
