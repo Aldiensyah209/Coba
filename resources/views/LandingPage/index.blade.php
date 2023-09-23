@@ -12,7 +12,7 @@
 
 <body>
     {{-- NavBar --}}
-    <header class="py-2 mb-5">
+    <header class="py-2 mb-4">
         <div class="container">
             <nav class="navbar navbar-expand-lg">
                 <a class="navbar-brand" href="#"><strong>XUZU</strong></a>
