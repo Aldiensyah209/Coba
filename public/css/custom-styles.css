@@ -8,24 +8,13 @@
     --bs-gutter-x: 48px !important;
 }
 
-.hero {
-    background: url("../images/backgrounds/bg-blur.jpg") no-repeat;
-    -webkit-mask-image: linear-gradient(black, transparent);
-    mask-image: linear-gradient(black, transparent);
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-    height: 50vw;
-    background-size: cover;
-}
-
 /* Navbar */
 header {
     position: relative;
-    z-index: 100;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
     transition: all 0.5s;
 }
 
@@ -33,8 +22,11 @@ header {
     --bs-navbar-hover-color: #d9606f !important;
 }
 
-.nav-link {
+.nav-item:not(:last-child) .nav-link{
     margin-right: 30px;
+}
+
+.nav-link {
     font-weight: bold;
 }
 
@@ -67,6 +59,48 @@ header {
     font-weight: bold;
 }
 
+/* HERO */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    margin-top: -80px;
+}
+
+.hero::before, .hero::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0; /* Height of the effect */
+}
+
+.hero::before {
+    top: 0;
+    /* Use your background color, assuming white: */
+    background-image: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
+    height: 150px;
+}
+.hero::after {
+    bottom: 0;
+    /* Use your background color, assuming white: */
+    background-image: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0));
+    height: 100px;
+}
+
+.hero .hero-image {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+}
+
+.hero .hero-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 /* Swiper Slider */
 .carousel-item {
     width: 100% !important;
@@ -84,6 +118,7 @@ header {
     background-color: #d9606f !important;
 }
 
+/* `sm` applies to x-small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     .nav-link:hover::after {
         display: none;
@@ -96,4 +131,22 @@ header {
     .carousel-item {
         height: 200px !important;
     }
+
+    .hero {
+        height: 70vh;
+        margin-top: -70px;
+    }
+
+    .headline {
+        text-align: center !important;
+        margin-bottom: 3rem;
+    }
 }
+
+/* `md` applies to small devices (landscape phones, less than 768px) */
+@media (max-width: 991.98px) { 
+    .hero {
+        height: 60vh;
+        margin-top: -80px;
+    }
+ }
