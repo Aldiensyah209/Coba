@@ -118,6 +118,16 @@ header {
     background-color: #d9606f !important;
 }
 
+.bg-primary-01 {
+    background-color: #d9606f !important;
+    opacity: 0.1;
+}
+
+.image-smartbuy {
+    width: 200px;
+    object-fit: cover;
+}
+
 /* `sm` applies to x-small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     .nav-link:hover::after {

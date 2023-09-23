@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Home;
 use App\Models\HomeImage;
+use App\Models\Smartbuy;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,6 +12,7 @@ class HomeController extends Controller
     public function index() {
         $home = Home::all();
         $homeImage = HomeImage::all();
-        return view('landingPage.home', compact('home', 'homeImage'));
+        $smartBuy = Smartbuy::all();
+        return view('landingPage.home', compact('home', 'homeImage', 'smartBuy'));
     }
 }
