@@ -42,39 +42,63 @@
     </div>
     <!-- End Jumbotron -->
     <!-- About -->
-    <div class="bg-about">
-        <div class="container">
-            <h2 class="text-center">About</h2>
-            <div class="row">
-                <div class="col-12 col-md-4 mb-3">
-                    <div class="card" style="height: 13rem;">
-                        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
-                            <img src="{{ asset('images/Icon Admin/pendiri.png') }}" alt="Icon" class="mb-2">
-                            <h5 class="card-title"> PENDIRIAN</h5>
-                            <p class="card-text">XUZU adalah brand resmi yang dicetuskan oleh Bintang Konveksi yang
-                                dilounching awal tahun 2023</p>
-                        </div>
+    <div class="container mb-4">
+        <h1 class="text-center mb-4">About</h1>
+        <div class="row">
+            <div class="col-12 col-md-4 mb-3">
+                <div class="card" style="height: 13rem;">
+                    <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                        <img src="{{ asset('images/Icon Admin/pendiri.png') }}" alt="Icon" class="mb-2">
+                        <h5 class="card-title"> PENDIRIAN</h5>
+                        <p class="card-text">XUZU adalah brand resmi yang dicetuskan oleh Bintang Konveksi yang
+                            dilounching awal tahun 2023</p>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 mb-3">
-                    <div class="card" style="height: 13rem;">
-                        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
-                            <img src="{{ asset('images/Icon Admin/tujuan.png') }}" alt="Icon" class="mb-2">
-                            <h5 class="card-title">TUJUAN</h5>
-                            <p class="card-text">Menyajikan produk berkualitas premium dan berdaya saing</p>
-                        </div>
+            </div>
+            <div class="col-12 col-md-4 mb-3">
+                <div class="card" style="height: 13rem;">
+                    <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                        <img src="{{ asset('images/Icon Admin/tujuan.png') }}" alt="Icon" class="mb-2">
+                        <h5 class="card-title">TUJUAN</h5>
+                        <p class="card-text">Menyajikan produk berkualitas premium dan berdaya saing</p>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 mb-3">
-                    <div class="card" style="height: 13rem;">
-                        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
-                            <img src="{{ asset('images/Icon Admin/manfaat.png') }}" alt="Icon" class="mb-2">
-                            <h5 class="card-title">MANFAAT</h5>
-                            <p class="card-text">Xuzu adalah menjadi identitas pengenal bagi costumer Bintang Konveksi</p>
-                        </div>
+            </div>
+            <div class="col-12 col-md-4 mb-3">
+                <div class="card" style="height: 13rem;">
+                    <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                        <img src="{{ asset('images/Icon Admin/manfaat.png') }}" alt="Icon" class="mb-2">
+                        <h5 class="card-title">MANFAAT</h5>
+                        <p class="card-text">Xuzu adalah menjadi identitas pengenal bagi costumer Bintang Konveksi</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+     <!-- End About -->
+     <!-- Smart Buy -->
+     <div class="container">
+        <h1 class="text-center mb-4">Smart Buy</h1>
+        @foreach($smartBuy as $index => $item)
+        <div class="row align-items-center justify-content-between mb-4">
+            @if($index % 2 == 0)
+            <div class="col col-md-5">
+                <h2>{{ $item->judul }}</h2>
+                <p class="text-break">{{ $item->deskripsi }}</p>
+            </div>
+            <div class="col col-md-5 bg-primary rounded d-flex align-items-center justify-content-center" style="height: 350px;">
+                <img class="image-smartbuy" src="{{ asset('images/post/landingPage/' . $item->gambar) }}" alt="{{ $item->gambar }}" />
+            </div>
+            @else
+            <div class="col col-md-5 bg-primary rounded d-flex align-items-center justify-content-center" style="height: 350px;">
+                <img class="image-smartbuy" src="{{ asset('images/post/landingPage/' . $item->gambar) }}" alt="{{ $item->gambar }}" />
+            </div>
+            <div class="col col-md-5">
+                <h2>{{ $item->judul }}</h2>
+                <p class="text-break">{{ $item->deskripsi }}</p>
+            </div>
+            @endif
+        </div> 
+        @endforeach
+     </div>
 @endsection
