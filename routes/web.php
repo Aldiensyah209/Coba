@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\LandingPage\AboutAdminController;
+use App\Http\Controllers\Admin\LandingPage\BkPageAdminController;
 use App\Http\Controllers\Admin\LandingPage\HomeAdminController;
 use App\Http\Controllers\Admin\LandingPage\SmartBuyAdminController;
 use App\Http\Controllers\Admin\LandingPage\TestimoniAdminController;
@@ -9,6 +10,9 @@ use App\Http\Controllers\Admin\LoginAdminController;
 use App\Http\Controllers\Admin\Product\XuzuAdminController;
 use App\Http\Controllers\Admin\Product\BintangKonveksiAdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\LandingPage\XuzuPageAdminController;
+
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -84,3 +88,8 @@ Route::controller(TestimoniAdminController::class)->group(function () {
     Route::put('testimoni/update/{id}', 'update')->name('testimoniAdmin.update');
     Route::delete('testimoni/delete/{id}', 'destroy')->name('testimoniAdmin.destroy');
 });
+
+
+Route::get('/landingpage/xuzu', [XuzuPageAdminController::class, 'xuzu'])->name('admin.landingpage.xuzu');
+
+Route::get('/landingpage/bintang-konveksi', [BkPageAdminController::class, 'bk'])->name('admin.landingpage.bk');

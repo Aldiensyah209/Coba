@@ -31,8 +31,8 @@
                                 Colection
                             </a>
                             <ul class="dropdown-menu dropdown-colection p-0">
-                                <li><a class="dropdown-item" href="{{ url('/LandingPage/xuzuPage') }}"
-                                        target="_blank">Xuzu</a></li>
+                                <li><a class="dropdown-item" href="{{ route('admin.landingpage.xuzu') }}">Xuzu</a></li>
+
                                 <li><a class="dropdown-item" href="#">Bintang Konveksi</a></li>
                             </ul>
                         </li>
