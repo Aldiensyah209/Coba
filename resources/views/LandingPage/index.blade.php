@@ -12,10 +12,10 @@
 
 <body>
     {{-- NavBar --}}
-    <header class="py-2 mb-4">
+    <header class="py-2">
         <div class="container">
             <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="#"><strong>XUZU</strong></a>
+                <a class="navbar-brand" href="#"><strong class="d-flex">XU <div class="color-logo-strong">Z</div>U</strong></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -52,11 +52,6 @@
     @yield('kontent')
     <!--  Main Content End -->
     <!-- Footer -->
-    <div class="card-footer text-body-secondary bg-dark-subtle py-1 mb-3">
-
-        <p class="text-lowercasetext-lowercase text-center text-dark">CopyRIght By: Bintang Konveksi</p>
-
-    </div>
     <!--Akhir Footer-->
 
     <script src="{{ asset('libs/jquery/dist/jquery.min.js') }}"></script>
