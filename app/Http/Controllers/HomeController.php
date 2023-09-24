@@ -12,7 +12,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $home = Home::all();
         $homeImage = HomeImage::all();
         $about = About::all();

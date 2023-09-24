@@ -138,10 +138,11 @@ header {
     overflow: hidden;
 }
 
-.img-container img {
+.img-container img, .produk img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
 }
 
 .smart-buy ul {
@@ -162,6 +163,19 @@ header {
 .smart-buy .cart-text {
     font-weight: normal !important;
     font-size: 17px !important;
+}
+
+.produk .thumbnail {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+}
+
+.produk img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 /* `sm` applies to x-small devices (portrait phones, less than 576px) */
@@ -186,5 +200,5 @@ header {
 
 /* `md` applies to small devices (landscape phones, less than 768px) */
 @media (max-width: 991.98px) {
-    
+
 }
