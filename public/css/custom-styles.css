@@ -25,6 +25,14 @@
     --bs-btn-disabled-border-color: #de483a;
 }
 
+.bg-danger {
+    background-color: red !important;
+}
+
+.right-0 {
+    right: 0 !important;
+}
+
 /* Navbar */
 header {
     transition: all 0.5s;
@@ -77,7 +85,7 @@ header {
 
 /* HERO */
 .hero {
-    background-color: #EFE9F3;
+    background-color: #F4F3EE;
 }
 
 /* Swiper Slider */
@@ -112,7 +120,7 @@ header {
 
 /* SMART BUY */
 .bg-smart-buy {
-    background-color: #FFEDEB;
+    background-color: #FFFBF3;
 }
 
 .bg-smart-buy-1 {
@@ -139,6 +147,11 @@ header {
 .smart-buy ul {
     list-style: circle;
     padding-left: 2rem;
+}
+
+.smart-buy ul li {
+    font-weight: 600 !important;
+    color: black !important;
 }
 
 .smart-buy h2 {

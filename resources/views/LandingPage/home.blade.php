@@ -94,7 +94,7 @@
             <div class="row">
                 <div class="col-md-6 d-flex flex-column justify-content-center">
                     <h2>{{ $item->judul }}</h2>
-                    <p class="card-text text-break">{{ $item->deskripsi }}</p>
+                    <p class="card-text text-break text-black fw-medium">{{ $item->deskripsi }}</p>
                 </div>
                 <div class="col-md-6 image-sb d-flex align-items-center">
                     <div class="img-container rounded">
@@ -112,5 +112,39 @@
 <div class="container my-5">
     <h5 class="text-center text-headline">PRODUCT</h5>
     <h2 class="text-center text-headline-desc mb-5">Featured Product</h2>
+    @if(count($xuzu) OR count($bintangKonveksi))
+    <div class="row">
+        @foreach($xuzu as $item)
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <span class="position-absolute right-0 top-0 badge bg-danger">
+                    New Produk
+                </span>
+                <img src="{{ asset('images/post/product/'. $item->gambar) }}" class="card-img-top" alt="{{ $item->gambar }}" height="240">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $item->nama }}</h5>
+                    <p class="card-text">{{ Str::limit($item->deskripsi, 25) }}</p>
+                    <a href="#" class="btn btn-primary">Detail</a>
+                </div>
+            </div>
+        </div>
+        @endforeach
+        @foreach($bintangKonveksi as $item)
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <span class="position-absolute right-0 top-0 badge bg-danger">
+                    New Produk
+                </span>
+                <img src="{{ asset('images/post/product/'. $item->gambar_bk) }}" class="card-img-top" alt="{{ $item->gambar_bk }}" height="240">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $item->nama_bk }}</h5>
+                    <p class="card-text">{{ Str::limit($item->deskripsi_bk, 25) }}</p>
+                    <a href="#" class="btn btn-primary">Detail</a>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+    @endif
 </div>
 @endsection
