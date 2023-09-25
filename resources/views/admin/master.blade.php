@@ -8,6 +8,7 @@
     <title>Admin | @yield('title')</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/logos/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/custom-styles.css') }}" />
 </head>
 
 <body>
