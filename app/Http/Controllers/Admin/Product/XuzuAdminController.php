@@ -30,7 +30,7 @@ class XuzuAdminController extends Controller
         ]);
 
         $imageName = date('YmdHis') . "." . $request->gambar->Extension();
-        $request->gambar->move(public_path('images/post/product/'), $imageName);
+        $request->gambar->move(public_path('images/post/product/xuzu/'), $imageName);
 
         $produk = new Xuzu([
             'nama' => $request->get('nama'),
@@ -67,10 +67,10 @@ class XuzuAdminController extends Controller
 
         if ($request->hasFile('edit_gambar')) {
             // Delete old image
-            File::delete(public_path('images/post/product/' . $produk->gambar));
+            File::delete(public_path('images/post/product/xuzu/' . $produk->gambar));
 
             $imageName = date('YmdHis') . "." . $request->edit_gambar->Extension();
-            $request->edit_gambar->move(public_path('images/post/product/'), $imageName);
+            $request->edit_gambar->move(public_path('images/post/product/xuzu/'), $imageName);
             $produk->gambar = $imageName;
         }
 
@@ -85,7 +85,7 @@ class XuzuAdminController extends Controller
         $produk->delete();
 
         // Delete old image
-        File::delete(public_path('images/post/product/' . $produk->gambar));
+        File::delete(public_path('images/post/product/xuzu/' . $produk->gambar));
 
         return redirect()->back()->with('success', 'Produk berhasil dihapus.');
     }

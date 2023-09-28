@@ -16,9 +16,9 @@ class TestimoniAdminController extends Controller
 
     public function index()
     {
-        $kontenttestimoni = Testimoni::all();
+        $testimoni = Testimoni::all();
 
-        return view('admin.layouts.testimoni', compact('kontenttestimoni'));
+        return view('admin.layouts.testimoni', compact('testimoni'));
     }
 
     public function store(Request $request)
@@ -30,23 +30,23 @@ class TestimoniAdminController extends Controller
         ]);
 
         $imageName = date('YmdHis') . "." . $request->gambar->Extension();
-        $request->gambar->move(public_path('images/post/landingPage/testimoni/'), $imageName);
+        $request->gambar->move(public_path('images/post/testimoni/'), $imageName);
 
-        $kontenttestimoni = new Testimoni([
+        $testimoni = new Testimoni([
 
             'gambar' => $imageName,
             'keterangan' => $request->get('keterangan'),
         ]);
 
-        $kontenttestimoni->save();
+        $testimoni->save();
 
         return redirect()->back()->with('success', 'Konten berhasil ditambahkan.');
     }
 
     public function getById($id)
     {
-        $kontenttestimoni = Testimoni::findOrFail($id);
-        return response()->json($kontenttestimoni, 200);
+        $testimoni = Testimoni::findOrFail($id);
+        return response()->json($testimoni, 200);
     }
 
     public function update(Request $request, $id)
@@ -58,31 +58,31 @@ class TestimoniAdminController extends Controller
 
         ]);
 
-        $kontenttestimoni = Testimoni::find($id);
+        $testimoni = Testimoni::find($id);
 
-        $kontenttestimoni->keterangan = $request->get('edit_keterangan');
+        $testimoni->keterangan = $request->get('edit_keterangan');
 
         if ($request->hasFile('edit_gambar')) {
             // Delete old image
-            File::delete(public_path('images/post/landingPage/testimoni/' . $kontenttestimoni->gambar));
+            File::delete(public_path('images/post/testimoni/' . $testimoni->gambar));
 
             $imageName = date('YmdHis') . "." . $request->edit_gambar->Extension();
-            $request->edit_gambar->move(public_path('images/post/landingPage/testimoni/'), $imageName);
-            $kontenttestimoni->gambar = $imageName;
+            $request->edit_gambar->move(public_path('images/post/testimoni/'), $imageName);
+            $testimoni->gambar = $imageName;
         }
 
-        $kontenttestimoni->save();
+        $testimoni->save();
 
-        return response()->json($kontenttestimoni, 200);
+        return response()->json($testimoni, 200);
     }
 
     public function destroy($id)
     {
-        $kontenttestimoni = Testimoni::findOrFail($id);
-        $kontenttestimoni->delete();
+        $testimoni = Testimoni::findOrFail($id);
+        $testimoni->delete();
 
         // Delete old image
-        File::delete(public_path('images/post/landingPage/testimoni/' . $kontenttestimoni->gambar));
+        File::delete(public_path('images/post/testimoni/' . $testimoni->gambar));
 
         return redirect()->back()->with('success', 'Konten berhasil dihapus.');
     }

@@ -2,17 +2,20 @@
 
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\LandingPage\AboutAdminController;
-use App\Http\Controllers\Admin\LandingPage\BkPageAdminController;
 use App\Http\Controllers\Admin\LandingPage\HomeAdminController;
 use App\Http\Controllers\Admin\LandingPage\SmartBuyAdminController;
 use App\Http\Controllers\Admin\LandingPage\TestimoniAdminController;
+use App\Http\Controllers\Admin\LandingPage\GaleriAdminController;
+use App\Http\Controllers\Admin\LandingPage\SocialMediaAdminController;
 use App\Http\Controllers\Admin\LoginAdminController;
 use App\Http\Controllers\Admin\Product\XuzuAdminController;
 use App\Http\Controllers\Admin\Product\BintangKonveksiAdminController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Admin\LandingPage\XuzuPageAdminController;
-
-
+use App\Http\Controllers\Admin\Product\AnekaSlempangAdminController;
+use App\Http\Controllers\AnekaSlempangController;
+use App\Http\Controllers\BintangKonveksiController;
+use App\Http\Controllers\SmartBuyController;
+use App\Http\Controllers\XuzuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,10 +29,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// WEB UTAMA
-Route::get('/', [HomeController::class, 'index'])->name('utama');
+// -----------------WEB UTAMA-----------------
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('xuzu-store', [XuzuController::class, 'index'])->name('landingPage.xuzu');
+Route::get('bintang-konveksi-store', [BintangKonveksiController::class, 'index'])->name('landingPage.bintangKonveksi');
+Route::get('aneka-slempang-store', [AnekaSlempangController::class, 'index'])->name('landingPage.anekaSlempang');
+Route::get('smart-buy', [SmartBuyController::class, 'index'])->name('smartBuy');
 
-// ADMIN ROUTE
+// -----------------ADMIN ROUTE-----------------
+Route::controller(LoginAdminController::class)->group(function () {
+    Route::get('admin', 'index')->name('admin')->middleware('isLogin');
+    Route::post('login', 'authenticate')->name('login');
+    Route::get('logout', 'logout')->name('logout');
+});
+
 Route::get('dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
 
 Route::controller(XuzuAdminController::class)->group(function () {
@@ -48,11 +61,12 @@ Route::controller(BintangKonveksiAdminController::class)->group(function () {
     Route::delete('bintang-konveksi/delete/{id}', 'destroy')->name('bk.destroy');
 });
 
-// AUTH
-Route::controller(LoginAdminController::class)->group(function () {
-    Route::get('admin', 'index')->name('admin')->middleware('isLogin');
-    Route::post('login', 'authenticate')->name('login');
-    Route::get('logout', 'logout')->name('logout');
+Route::controller(AnekaSlempangAdminController::class)->group(function () {
+    Route::get('aneka-slempang', 'index')->name('as.index');
+    Route::get('aneka-slempang/{id}', 'getById')->name('as.id');
+    Route::post('aneka-slempang/create', 'store')->name('as.store');
+    Route::put('aneka-slempang/update/{id}', 'update')->name('as.update');
+    Route::delete('aneka-slempang/delete/{id}', 'destroy')->name('as.destroy');
 });
 
 Route::controller(HomeAdminController::class)->group(function () {
@@ -61,8 +75,8 @@ Route::controller(HomeAdminController::class)->group(function () {
     Route::post('home-content/create', 'storeKonten')->name('homeContent.store');
     Route::put('home-content/update/{id}', 'updateKonten')->name('homeContent.update');
     Route::delete('home-content/delete/{id}', 'destroyKonten')->name('homeContent.destroy');
-    Route::post('homeImage/create', 'storeGambar')->name('homeImage.store');
-    Route::delete('homeImage/delete/{id}', 'destroyGambar')->name('homeImage.destroy');
+    Route::post('home-image/create', 'storeGambar')->name('homeImage.store');
+    Route::delete('home-image/delete/{id}', 'destroyGambar')->name('homeImage.destroy');
 });
 
 Route::controller(AboutAdminController::class)->group(function () {
@@ -89,7 +103,16 @@ Route::controller(TestimoniAdminController::class)->group(function () {
     Route::delete('testimoni/delete/{id}', 'destroy')->name('testimoniAdmin.destroy');
 });
 
+Route::controller(GaleriAdminController::class)->group(function () {
+    Route::get('galeri', 'index')->name('galeri.index');
+    Route::post('galeri/create', 'store')->name('galeri.store');
+    Route::delete('galeri/delete/{id}', 'destroy')->name('galeri.destroy');
+});
 
-Route::get('/landingpage/xuzu', [XuzuPageAdminController::class, 'xuzu'])->name('admin.landingpage.xuzu');
-
-Route::get('/landingpage/bintang-konveksi', [BkPageAdminController::class, 'bk'])->name('admin.landingpage.bk');
+Route::controller(SocialMediaAdminController::class)->group(function () {
+    Route::get('social-media', 'index')->name('sosmed.index');
+    Route::get('social-media/{id}', 'getById')->name('sosmed.id');
+    Route::post('social-media/create', 'store')->name('sosmed.store');
+    Route::put('social-media/update/{id}', 'update')->name('sosmed.update');
+    Route::delete('social-media/delete/{id}', 'destroy')->name('sosmed.destroy');
+});

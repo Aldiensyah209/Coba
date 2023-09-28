@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Product;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\AnekaSlempang;
 use Illuminate\Support\Facades\File;
-use App\Models\BintangKonveksi;
 
-class BintangKonveksiAdminController extends Controller
+class AnekaSlempangAdminController extends Controller
 {
     public function __construct()
     {
@@ -16,8 +16,8 @@ class BintangKonveksiAdminController extends Controller
 
     public function index()
     {
-        $produk = BintangKonveksi::paginate(5);
-        return view('admin.layouts.bintang_konveksi', compact('produk'));
+        $produk = AnekaSlempang::paginate(5);
+        return view('admin.layouts.aneka_slempang', compact('produk'));
     }
 
     public function store(Request $request)
@@ -30,13 +30,13 @@ class BintangKonveksiAdminController extends Controller
         ]);
 
         $imageName = date('YmdHis') . "." . $request->gambar->Extension();
-        $request->gambar->move(public_path('images/post/product/bintang_konveksi/'), $imageName);
+        $request->gambar->move(public_path('images/post/product/aneka_slempang/'), $imageName);
 
-        $produk = new BintangKonveksi([
-            'nama_bk' => $request->get('nama'),
-            'deskripsi_bk' => $request->get('deskripsi'),
-            'harga_bk' => $request->get('harga'),
-            'gambar_bk' => $imageName,
+        $produk = new AnekaSlempang([
+            'nama_as' => $request->get('nama'),
+            'deskripsi_as' => $request->get('deskripsi'),
+            'harga_as' => $request->get('harga'),
+            'gambar_as' => $imageName,
         ]);
 
         $produk->save();
@@ -46,7 +46,7 @@ class BintangKonveksiAdminController extends Controller
 
     public function getById($id)
     {
-        $produk = BintangKonveksi::findOrFail($id);
+        $produk = AnekaSlempang::findOrFail($id);
         return response()->json($produk, 200);
     }
 
@@ -59,19 +59,19 @@ class BintangKonveksiAdminController extends Controller
             'edit_gambar' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
-        $produk = BintangKonveksi::find($id);
+        $produk = AnekaSlempang::find($id);
 
-        $produk->nama_bk = $request->get('edit_nama');
-        $produk->deskripsi_bk = $request->get('edit_deskripsi');
-        $produk->harga_bk = $request->get('edit_harga');
+        $produk->nama_as = $request->get('edit_nama');
+        $produk->deskripsi_as = $request->get('edit_deskripsi');
+        $produk->harga_as = $request->get('edit_harga');
 
         if ($request->hasFile('edit_gambar')) {
             // Delete old image
-            File::delete(public_path('images/post/product/bintang_konveksi/' . $produk->gambar_bk));
+            File::delete(public_path('images/post/product/aneka_slempang/' . $produk->gambar_as));
 
             $imageName = date('YmdHis') . "." . $request->edit_gambar->Extension();
-            $request->edit_gambar->move(public_path('images/post/product/bintang_konveksi/'), $imageName);
-            $produk->gambar_bk = $imageName;
+            $request->edit_gambar->move(public_path('images/post/product/aneka_slempang/'), $imageName);
+            $produk->gambar_as = $imageName;
         }
 
         $produk->save();
@@ -81,11 +81,11 @@ class BintangKonveksiAdminController extends Controller
 
     public function destroy($id)
     {
-        $produk = BintangKonveksi::findOrFail($id);
+        $produk = AnekaSlempang::findOrFail($id);
         $produk->delete();
 
         // Delete old image
-        File::delete(public_path('images/post/product/bintang_konveksi/' . $produk->gambar_bk));
+        File::delete(public_path('images/post/product/aneka_slempang/' . $produk->gambar_as));
 
         return redirect()->back()->with('success', 'Produk berhasil dihapus.');
     }

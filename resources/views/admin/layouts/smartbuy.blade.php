@@ -33,8 +33,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (count($kontentsmartbuy))
-                    @foreach ($kontentsmartbuy as $item)
+                    @if (count($smartBuy))
+                    @foreach ($smartBuy as $item)
                     <tr>
                         <td class="border-bottom-0">
                             <h6 class="fw-normal mb-0">{{ $item->id }}</h6>
@@ -44,7 +44,7 @@
                         </td>
                         <td class="border-bottom-0">
                             @if ($item->gambar)
-                            <img src="{{ asset('images/post/landingPage/' . $item->gambar) }}" alt="{{ $item->gambar }}" width="100">
+                            <img src="{{ asset('images/post/smart_buy/' . $item->gambar) }}" alt="{{ $item->gambar }}" width="100">
                             @else
                             Tidak ada gambar
                             @endif
@@ -109,8 +109,8 @@
     </div>
 </div>
 
+@if (count($smartBuy))
 <!-- Edit Modal Konten -->
-@if (count($kontentsmartbuy))
 <div class="modal fade" id="editKontenModalSmartbuy" tabindex="-1" aria-labelledby="editKontenModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
