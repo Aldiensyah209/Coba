@@ -31,15 +31,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (count($kontenttestimoni))
-                    @foreach ($kontenttestimoni as $item)
+                    @if (count($testimoni))
+                    @foreach ($testimoni as $item)
                     <tr>
                         <td class="border-bottom-0">
                             <h6 class="fw-normal mb-0">{{ $item->id }}</h6>
                         </td>
                         <td class="border-bottom-0">
                             @if ($item->gambar)
-                            <img src="{{ asset('images/post/landingPage/testimoni/' . $item->gambar) }}" alt="{{ $item->gambar }}" width="100">
+                            <img src="{{ asset('images/post/testimoni/' . $item->gambar) }}" alt="{{ $item->gambar }}" width="100">
                             @else
                             Tidak ada gambar
                             @endif
@@ -75,7 +75,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="tambahKontenModalLabel">Tambah Konten</h5>
+                <h5 class="modal-title" id="tambahKontenModalLabel">Tambah Testimoni</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="createForm" action="{{ route('testimoniAdmin.store') }}" method="POST" enctype="multipart/form-data">
@@ -101,13 +101,13 @@
     </div>
 </div>
 
+@if (count($testimoni))
 <!-- Edit Modal Konten -->
-@if (count($kontenttestimoni))
 <div class="modal fade" id="editKontenModalTestimoni" tabindex="-1" aria-labelledby="editKontenModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editKontenModalLabel">Edit Konten</h5>
+                <h5 class="modal-title" id="editKontenModalLabel">Edit Testimoni</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="updateFormKontenTestimoni" method="POST">

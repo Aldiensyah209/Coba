@@ -92,7 +92,7 @@
             </td>
             <td class="border-bottom-0">
               @if ($item->gambar)
-              <img src="{{ asset('images/post/landingPage/' . $item->gambar) }}" alt="{{ $item->gambar }}" width="250">
+              <img src="{{ asset('images/post/hero/' . $item->gambar) }}" alt="{{ $item->gambar }}" width="250">
               @else
               Tidak ada gambar
               @endif
@@ -171,8 +171,8 @@
   </div>
 </div>
 
-<!-- Edit Modal Konten -->
 @if(count($konten))
+<!-- Edit Modal Konten -->
 <div class="modal fade" id="editKontenModal" tabindex="-1" aria-labelledby="editKontenModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

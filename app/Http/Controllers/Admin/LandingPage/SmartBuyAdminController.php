@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\LandingPage;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Smartbuy;
+use App\Models\SmartBuy;
 use Illuminate\Support\Facades\File;
 
 class SmartBuyAdminController extends Controller
@@ -16,9 +16,9 @@ class SmartBuyAdminController extends Controller
 
     public function index()
     {
-        $kontentsmartbuy = Smartbuy::all();
+        $smartBuy = SmartBuy::all();
 
-        return view('admin.layouts.smartbuy', compact('kontentsmartbuy'));
+        return view('admin.layouts.smartbuy', compact('smartBuy'));
     }
 
     public function store(Request $request)
@@ -31,9 +31,9 @@ class SmartBuyAdminController extends Controller
         ]);
 
         $imageName = date('YmdHis') . "." . $request->gambar->Extension();
-        $request->gambar->move(public_path('images/post/landingPage/'), $imageName);
+        $request->gambar->move(public_path('images/post/smart_buy/'), $imageName);
 
-        $kontentsmartbuy = new Smartbuy([
+        $smartBuy = new SmartBuy([
             'judul' => $request->get('judul'),
             'gambar' => $imageName,
             'deskripsi' => $request->get('deskripsi'),
@@ -41,15 +41,15 @@ class SmartBuyAdminController extends Controller
 
 
 
-        $kontentsmartbuy->save();
+        $smartBuy->save();
 
         return redirect()->back()->with('success', 'Konten berhasil ditambahkan.');
     }
 
     public function getById($id)
     {
-        $kontentsmartbuy = Smartbuy::findOrFail($id);
-        return response()->json($kontentsmartbuy, 200);
+        $smartBuy = SmartBuy::findOrFail($id);
+        return response()->json($smartBuy, 200);
     }
 
     public function update(Request $request, $id)
@@ -61,62 +61,33 @@ class SmartBuyAdminController extends Controller
 
         ]);
 
-        $kontentsmartbuy = Smartbuy::find($id);
+        $smartBuy = SmartBuy::find($id);
 
-        $kontentsmartbuy->judul = $request->get('edit_judul');
-        $kontentsmartbuy->deskripsi = $request->get('edit_deskripsi');
+        $smartBuy->judul = $request->get('edit_judul');
+        $smartBuy->deskripsi = $request->get('edit_deskripsi');
 
         if ($request->hasFile('edit_gambar')) {
             // Delete old image
-            File::delete(public_path('images/post/landingPage/' . $kontentsmartbuy->gambar));
+            File::delete(public_path('images/post/smart_buy/' . $smartBuy->gambar));
 
             $imageName = date('YmdHis') . "." . $request->edit_gambar->Extension();
-            $request->edit_gambar->move(public_path('images/post/landingPage/'), $imageName);
-            $kontentsmartbuy->gambar = $imageName;
+            $request->edit_gambar->move(public_path('images/post/smart_buy/'), $imageName);
+            $smartBuy->gambar = $imageName;
         }
 
-        $kontentsmartbuy->save();
+        $smartBuy->save();
 
-        return response()->json($kontentsmartbuy, 200);
+        return response()->json($smartBuy, 200);
     }
 
     public function destroy($id)
     {
-        $kontentsmartbuy = Smartbuy::findOrFail($id);
-        $kontentsmartbuy->delete();
+        $smartBuy = SmartBuy::findOrFail($id);
+        $smartBuy->delete();
 
         // Delete old image
-        File::delete(public_path('images/post/product/' . $kontentsmartbuy->gambar));
+        File::delete(public_path('images/post/product/' . $smartBuy->gambar));
 
         return redirect()->back()->with('success', 'Konten berhasil dihapus.');
     }
-
-    // public function storeGambar(Request $request)
-    // {
-    //     $request->validate([
-    //         'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-    //     ]);
-
-    //     $imageName = date('YmdHis') . "." . $request->gambar->Extension();
-    //     $request->gambar->move(public_path('images/post/landingPage/'), $imageName);
-
-    //     $gambar = new Smartbuyimg([
-    //         'gambar' => $imageName,
-    //     ]);
-
-    //     $gambar->save();
-
-    //     return redirect()->back()->with('success', 'Gambar berhasil ditambahkan.');
-    // }
-
-    // public function destroyGambar($id)
-    // {
-    //     $gambar = Smartbuyimg::findOrFail($id);
-    //     $gambar->delete();
-
-    //     // Delete old image
-    //     File::delete(public_path('images/post/landingPage/' . $gambar->gambar));
-
-    //     return redirect()->back()->with('success', 'Gambar berhasil dihapus.');
-    // }
 }

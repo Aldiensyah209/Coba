@@ -77,7 +77,7 @@ class HomeAdminController extends Controller
         ]);
 
         $imageName = date('YmdHis') . "." . $request->gambar->Extension();
-        $request->gambar->move(public_path('images/post/landingPage/'), $imageName);
+        $request->gambar->move(public_path('images/post/hero/'), $imageName);
 
         $gambar = new HomeImage([
             'gambar' => $imageName,
@@ -94,7 +94,7 @@ class HomeAdminController extends Controller
         $gambar->delete();
 
         // Delete old image
-        File::delete(public_path('images/post/landingPage/' . $gambar->gambar));
+        File::delete(public_path('images/post/hero/' . $gambar->gambar));
 
         return redirect()->back()->with('success', 'Gambar berhasil dihapus.');
     }

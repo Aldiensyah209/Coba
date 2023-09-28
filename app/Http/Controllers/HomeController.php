@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\AnekaSlempang;
 use App\Models\BintangKonveksi;
+use App\Models\Galeri;
 use App\Models\Home;
 use App\Models\HomeImage;
 use App\Models\Smartbuy;
+use App\Models\SocialMedia;
+use App\Models\Testimoni;
 use App\Models\Xuzu;
 use Illuminate\Http\Request;
 
@@ -17,9 +21,22 @@ class HomeController extends Controller
         $home = Home::all();
         $homeImage = HomeImage::all();
         $about = About::all();
-        $smartBuy = Smartbuy::all();
-        $xuzu = Xuzu::latest()->take(2)->get();
-        $bintangKonveksi = BintangKonveksi::latest()->take(2)->get();
-        return view('landingPage.home', compact('home', 'homeImage', 'about', 'smartBuy', 'xuzu', 'bintangKonveksi'));
+        $xuzu = Xuzu::latest()->get();
+        $bintangKonveksi = BintangKonveksi::latest()->get();
+        $anekaSlempang = AnekaSlempang::latest()->get();
+        $testimoni = Testimoni::latest()->take(4)->get();
+        $galeri = Galeri::all();
+        $sosmed = SocialMedia::where('isPriority', 1)->get();
+        return view('layouts.home', compact(
+            'home', 
+            'homeImage', 
+            'about', 
+            'xuzu', 
+            'bintangKonveksi', 
+            'anekaSlempang',
+            'testimoni',
+            'galeri',
+            'sosmed',
+        ));
     }
 }
