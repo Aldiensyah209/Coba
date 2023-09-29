@@ -252,6 +252,7 @@ header {
 }
 
 #partner .logo-container {
+    width: -moz-fit-content;
     width: fit-content;
     height: 100px;
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\About;
 use App\Models\AnekaSlempang;
 use App\Models\BintangKonveksi;
@@ -27,16 +28,18 @@ class HomeController extends Controller
         $testimoni = Testimoni::latest()->take(4)->get();
         $galeri = Galeri::all();
         $sosmed = SocialMedia::where('isPriority', 1)->get();
+        $produkDetail = Xuzu::all();
         return view('layouts.home', compact(
-            'home', 
-            'homeImage', 
-            'about', 
-            'xuzu', 
-            'bintangKonveksi', 
+            'home',
+            'homeImage',
+            'about',
+            'xuzu',
+            'bintangKonveksi',
             'anekaSlempang',
             'testimoni',
             'galeri',
             'sosmed',
+            'produkDetail'
         ));
     }
 }
