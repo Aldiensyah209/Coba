@@ -2,23 +2,21 @@
 
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\LandingPage\AboutAdminController;
-use App\Http\Controllers\Admin\LandingPage\DetailAnekaSlempangController;
-use App\Http\Controllers\Admin\LandingPage\DetailBintangKonveksiController;
-use App\Http\Controllers\Admin\LandingPage\DetailXuzuController;
-use App\Http\Controllers\Admin\LandingPage\HomeAdminController;
 use App\Http\Controllers\Admin\LandingPage\SmartBuyAdminController;
 use App\Http\Controllers\Admin\LandingPage\TestimoniAdminController;
 use App\Http\Controllers\Admin\LandingPage\GaleriAdminController;
+use App\Http\Controllers\Admin\LandingPage\HomeAdminController;
 use App\Http\Controllers\Admin\LandingPage\SocialMediaAdminController;
 use App\Http\Controllers\Admin\LoginAdminController;
 use App\Http\Controllers\Admin\Product\XuzuAdminController;
 use App\Http\Controllers\Admin\Product\BintangKonveksiAdminController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\Product\AnekaSlempangAdminController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AnekaSlempangController;
 use App\Http\Controllers\BintangKonveksiController;
 use App\Http\Controllers\SmartBuyController;
 use App\Http\Controllers\XuzuController;
+use App\Http\Controllers\DetailProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,9 +36,7 @@ Route::get('xuzu-store', [XuzuController::class, 'index'])->name('landingPage.xu
 Route::get('bintang-konveksi-store', [BintangKonveksiController::class, 'index'])->name('landingPage.bintangKonveksi');
 Route::get('aneka-slempang-store', [AnekaSlempangController::class, 'index'])->name('landingPage.anekaSlempang');
 Route::get('smart-buy', [SmartBuyController::class, 'index'])->name('smartBuy');
-Route::get('/produk/detail/xuzu/{id}', [DetailXuzuController::class, 'show'])->name('produkDetail.detail');
-Route::get('/produk/detail/bintang-konveksi/{id}', [DetailBintangKonveksiController::class, 'show'])->name('produkDetailBK.detail');
-Route::get('/produk/detail/aneka-slempang/{id}', [DetailAnekaSlempangController::class, 'show'])->name('produkDetailAS.detail');
+Route::get('detail/{product}/{id}', [DetailProductController::class, 'show'])->name('product_detail');
 
 
 // -----------------ADMIN ROUTE-----------------

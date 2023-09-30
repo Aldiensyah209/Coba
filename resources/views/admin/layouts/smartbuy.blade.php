@@ -42,9 +42,9 @@
                         <td class="border-bottom-0">
                             <h6 class="fw-normal mb-0">{{ $item->judul }}</h6>
                         </td>
-                        <td class="border-bottom-0">
+                        <td class="border-bottom-0 overflow-hidden">
                             @if ($item->gambar)
-                            <img src="{{ asset('images/post/smart_buy/' . $item->gambar) }}" alt="{{ $item->gambar }}" width="100">
+                            <img class="object-fit-cover rounded" src="{{ asset('images/post/smart_buy/' . $item->gambar) }}" alt="{{ $item->gambar }}" width="120" height="100">
                             @else
                             Tidak ada gambar
                             @endif

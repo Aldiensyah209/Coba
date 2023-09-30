@@ -20,7 +20,7 @@
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
                     <a href="{{ route('home') }}" class="text-nowrap logo-img" target="_blank" rel="noopener">
-                        <img src="{{ asset('images/logos/xuzu.svg') }}" width="180" alt="" />
+                        <img src="{{ asset('images/logos/xuzu.svg') }}" width="140" alt="Logo Xuzu" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -119,7 +119,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link {{ Request::is('*social-media*') ? 'active' : '' }}" href="{{ route('sosmed.index') }}" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-photo"></i>
+                                    <i class="ti ti-device-mobile-message"></i>
                                 </span>
                                 <span class="hide-menu">Social Media</span>
                             </a>

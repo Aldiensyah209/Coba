@@ -34,7 +34,7 @@
             </td>
             <td class="border-bottom-0">
               @if ($item->gambar)
-              <img src="{{ asset('images/post/galeri/' . $item->gambar) }}" alt="{{ $item->gambar }}" width="250">
+              <img class="object-fit-cover rounded" src="{{ asset('images/post/galeri/' . $item->gambar) }}" alt="{{ $item->gambar }}" width="180" height="140">
               @else
               Tidak ada gambar
               @endif

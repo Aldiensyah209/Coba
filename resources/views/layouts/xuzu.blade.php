@@ -18,7 +18,7 @@
                                 <p class="card-text">{{ Str::limit($item->deskripsi, 45) }}</p>
                             </div>
                             <div class="card-footer px-3 pb-3 pt-0 d-flex">
-                                <a href="{{ route('produkDetail.detail', $item->id) }}"
+                                <a href="{{ route('product_detail', ['product' => 'xuzu', 'id' => $item->id]) }}"
                                     class="btn btn-primary btn-primary__landing-page me-2">Detail</a>
                                 <a href="#"
                                     class="btn btn-primary btn-succes__landing-page d-flex align-items-center">

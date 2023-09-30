@@ -90,9 +90,9 @@
             <td class="border-bottom-0">
               <h6 class="fw-normal mb-0">{{ $item->id }}</h6>
             </td>
-            <td class="border-bottom-0">
+            <td class="border-bottom-0 overflow-hidden">
               @if ($item->gambar)
-              <img src="{{ asset('images/post/hero/' . $item->gambar) }}" alt="{{ $item->gambar }}" width="250">
+              <img class="object-fit-cover rounded" src="{{ asset('images/post/hero/' . $item->gambar) }}" alt="{{ $item->gambar }}" width="180" height="140">
               @else
               Tidak ada gambar
               @endif
