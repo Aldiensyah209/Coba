@@ -27,8 +27,12 @@ class HomeController extends Controller
         $anekaSlempang = AnekaSlempang::latest()->get();
         $testimoni = Testimoni::latest()->take(4)->get();
         $galeri = Galeri::all();
-        $sosmed = SocialMedia::where('isPriority', 1)->get();
+        $sosmed = SocialMedia::all();
         $produkDetail = Xuzu::all();
+        $whatsapp = SocialMedia::pluck('whatsapp');
+        $instagram = SocialMedia::pluck('instagram');
+        $facebook = SocialMedia::pluck('facebook');
+        $tiktok = SocialMedia::pluck('tiktok');
         return view('layouts.home', compact(
             'home',
             'homeImage',
@@ -39,7 +43,11 @@ class HomeController extends Controller
             'testimoni',
             'galeri',
             'sosmed',
-            'produkDetail'
+            'produkDetail',
+            'whatsapp',
+            'instagram',
+            'facebook',
+            'tiktok',
         ));
     }
 }

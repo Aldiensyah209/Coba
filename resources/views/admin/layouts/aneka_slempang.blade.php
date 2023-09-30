@@ -47,9 +47,9 @@
             <td class="border-bottom-0">
               <h6 class="fw-normal mb-0">{{ "Rp " . number_format($item->harga_as,2,',','.') }}</h6>
             </td>
-            <td class="border-bottom-0">
+            <td class="border-bottom-0 overflow-hidden">
               @if ($item->gambar_as)
-              <img src="{{ asset('images/post/product/aneka_slempang/' . $item->gambar_as) }}" alt="{{ $item->gambar_as }}" width="100">
+              <img class="object-fit-cover rounded" src="{{ asset('images/post/product/aneka_slempang/' . $item->gambar_as) }}" alt="{{ $item->gambar_as }}" width="120" height="100">
               @else
               Tidak ada gambar
               @endif

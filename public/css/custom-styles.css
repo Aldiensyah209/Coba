@@ -259,7 +259,7 @@ header {
 
 /* --------------------------------MESSAGE-------------------------------- */
 #message {
-    background-color: #f6ead6;
+    background-color: #fff9ee;
 }
 
 #message h2::before, #message h2::after {
@@ -294,8 +294,22 @@ header {
     cursor: pointer;
 }
 
-#footer ul li:hover {
+#footer a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#footer a:hover {
     color: #ff5f51;
+}
+
+#footer .text-haki::before {
+    content: "";
+    display: block;
+    border-bottom: 4px solid #cacaca;
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
 }
 
 /* --------------------------------PRODUCT LIST-------------------------------- */

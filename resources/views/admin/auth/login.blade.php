@@ -18,8 +18,8 @@
           <div class="col-md-8 col-lg-6 col-xxl-3">
             <div class="card mb-0">
               <div class="card-body">
-                <a href="#" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                  <h1>Xuzu Admin</h1>
+                <a href="{{ route('home') }}" class="text-nowrap logo-img text-center d-block py-3 w-100" target="_blank" rel="noopener">
+                  <img src="{{ asset('images/logos/xuzu.svg') }}" width="140" alt="Logo Xuzu" />
                 </a>
                 <form action="{{ route('login') }}" method="POST">
                   @csrf
