@@ -66,8 +66,8 @@
                                 <h4 class="mb-2 mb-md-3">Product</h4>
                                 <ul class="fw-bold">
                                     <li><a href="{{ route('landingPage.xuzu') }}">Xuzu Store</a></li>
-                                    <li><a href=" route('landingPage.bintangKonveksi') }}">Bintang Konveksi</a></li>
-                                    <li><a href=" route('landingPage.anekaSlempang') }}">Aneka Slempang</a></li>
+                                    <li><a href="{{ route('landingPage.bintangKonveksi') }}">Bintang Konveksi</a></li>
+                                    <li><a href="{{  route('landingPage.anekaSlempang') }}">Aneka Slempang</a></li>
                                 </ul>
                             </div>
                             <div class="col-md-6 col-lg-4">
@@ -113,7 +113,9 @@
                             </div>
                             <div class="col-md-6 col-lg-4">
                                 <h4 class="mb-2 mb-md-3">Location</h4>
-                                <a class="fw-bold">Jalan Raya Sengkaling No. 06 Jetis, Kelurahan Mulyoagung Kec. Dau, Kabupaten Malang Jawa Timur</a>
+                                <a class="d-block container-lokasi rounded overflow-hidden" href="https://maps.app.goo.gl/QQNvmjtQiHF9bXrp8" target="_blank" rel="noopener">
+                                    <img src="{{ asset('images/backgrounds/maps-lokasi.png') }}" alt="">
+                                </a>
                             </div>
                         </div>
                     </div>

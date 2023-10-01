@@ -11,14 +11,22 @@ foreach ($sosmed as $item) {
 <div id="hero" class="mb-5 d-flex align-items-center">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 align-self-center mb-sm center-sm">
+            <div class="col-md-4 align-self-center mb-sm center-sm">
                 @if(count($home))
-                <h1 class="bg-warning d-inline px-2"><strong>{{ $home->first()->judul }}</strong></h1>
-                <h3 class="mt-2 mb-4">{!! $home->first()->deskripsi !!}</h3>
+                <div class="position-relative">
+                    <div class="bg-title position-absolute overflow-hidden">
+                        <img src="{{ asset('images/backgrounds/bg-title.png') }}" alt="" >
+                    </div>
+                    <h1 class="position-absolute"><strong>{{ $home->first()->judul }}</strong></h1>
+                </div>
+                <h2 class="mt-5 mb-4">{!! $home->first()->deskripsi !!}</h2>
                 <a href="#product" class="btn btn-primary btn-primary__landing-page py-2 px-4 me-auto" type="submit">Belanja Sekarang</a>
                 @endif
+                <!-- <div class="img-container">
+                    <img src="{{ asset('images/logos/Paket.png') }}" alt="" width="300">
+                </div> -->
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <!-- Swiper -->
                 <div class="swiper mySwiper shadow-lg rounded overflow-hidden">
                     <div class="swiper-wrapper">
@@ -101,7 +109,7 @@ foreach ($sosmed as $item) {
                     <div class="thumbnail">
                         <img src="{{ asset('images/post/testimoni/' . $item->gambar) }}" class="card-img-top" alt="{{ $item->gambar }}">
                     </div>
-                    <div class="card-body p-3 d-flex align-items-center justify-content-center">
+                    <div class="card-body px-3 py-0 d-flex align-items-center justify-content-center">
                         <p class="card-text text-center text-break">"{{ $item->keterangan }}"</p>
                     </div>
                 </div>
@@ -198,27 +206,30 @@ foreach ($sosmed as $item) {
             </div>
             <div class="col-md-6">
                 <div class="d-flex flex-wrap">
-                    <div class="logo-container overflow-hidden rounded bg-light p-3 me-3 mt-5 mt-md-5 mt-lg-0 flex-fill">
-                        <img src="{{ asset('images/logos/JNE.svg') }}" alt="">
-                    </div>
-                    <div class="logo-container overflow-hidden rounded bg-light p-3 me-3 mt-3 mt-sm-3 mt-md-3 mt-lg-0 flex-fill">
-                        <img src="{{ asset('images/logos/j-t-express.svg') }}" alt="">
-                    </div>
-                    <div class="logo-container overflow-hidden rounded bg-light p-3 me-3 mt-3 flex-fill">
-                        <img class="rounded" src="{{ asset('images/logos/lion-parcel.png') }}" alt="">
-                    </div>
-                    <div class="logo-container overflow-hidden rounded bg-light p-3 me-3 mt-3 flex-fill">
-                        <img class="rounded" src="{{ asset('images/logos/indah-logistik-cargo.svg') }}" alt="">
-                    </div>
-                    <div class="logo-container overflow-hidden rounded bg-light p-3 me-3 mt-3 flex-fill">
-                        <img class="rounded" src="{{ asset('images/logos/jt-cargo.svg') }}" alt="">
-                    </div>
-                    <div class="logo-container overflow-hidden rounded bg-light p-3 me-3 mt-3">
-                        <img src="{{ asset('images/logos/sicepat-ekspres.svg') }}" alt="">
-                    </div>
-                    <div class="logo-container overflow-hidden rounded bg-light p-3 me-3 mt-3">
-                        <img src="{{ asset('images/logos/pos-indonesia.svg') }}" alt="">
-                    </div>
+                    <a href="https://jne.co.id/shipping-fee" class="logo-container overflow-hidden rounded bg-light p-3 me-3 mt-5 mt-md-5 mt-lg-0 flex-fill" target="_blank" rel="noopener">
+                        <img src="{{ asset('images/logos/JNE.svg') }}" alt="Logo JNE">
+                    </a>
+                    <a href="https://www.jet.co.id/rates" class="logo-container overflow-hidden rounded bg-light p-3 me-3 mt-3 mt-sm-3 mt-md-3 mt-lg-0 flex-fill" target="_blank" rel="noopener">
+                        <img src="{{ asset('images/logos/j-t-express.svg') }}" alt="Logo J&T Express">
+                    </a>
+                    <a href="https://lionparcel.com/tarif" class="logo-container overflow-hidden rounded bg-light p-3 me-3 mt-3 flex-fill" target="_blank" rel="noopener">
+                        <img class="rounded" src="{{ asset('images/logos/lion-parcel.png') }}" alt="Logo Lion Parcel">
+                    </a>
+                    <a href="https://indahonline.com/shipping/rates" class="logo-container overflow-hidden rounded bg-light p-3 me-3 mt-3 flex-fill" target="_blank" rel="noopener">
+                        <img class="rounded" src="{{ asset('images/logos/indah-logistik-cargo.svg') }}" alt="Logo Indah Logistik">
+                    </a>
+                    <a href="https://www.jtcargo.id/networkQuery?type=2&senderAddressVal=&receiveAddressVal=&sender=%7B%22areaId%22%3A%22%22,%22cityId%22%3A%22%22,%22provinceId%22%3A%22%22%7D&receive=%7B%22areaId%22%3A%22%22,%22cityId%22%3A%22%22,%22provinceId%22%3A%22%22%7D&weight" class="logo-container overflow-hidden rounded bg-light p-3 me-3 mt-3 flex-fill" target="_blank" rel="noopener">
+                        <img class="rounded" src="{{ asset('images/logos/jt-cargo.svg') }}" alt="Logo J&T Cargo">
+                    </a>
+                    <a href="https://www.sicepat.com/deliveryFee" class="logo-container overflow-hidden rounded bg-light p-3 me-3 mt-3" target="_blank" rel="noopener">
+                        <img src="{{ asset('images/logos/sicepat-ekspres.svg') }}" alt="Logo Si Cepat Express">
+                    </a>
+                    <a href="https://www.posindonesia.co.id/id/check-tarif" class="logo-container overflow-hidden rounded bg-light p-3 me-3 mt-3" target="_blank" rel="noopener">
+                        <img src="{{ asset('images/logos/pos-indonesia.svg') }}" alt="Logo Pos Indonesia">
+                    </a>
+                    <a href="https://www.ninjaxpress.co/id-id#price-estimate" class="logo-container d-block overflow-hidden rounded bg-light p-3 me-3 mt-3" target="_blank" rel="noopener">
+                        <img src="{{ asset('images/logos/ninja-ekspres.png') }}" alt="Logo Ninja Express">
+                    </a>
                 </div>
             </div>
         </div>
@@ -229,7 +240,7 @@ foreach ($sosmed as $item) {
 <div id="message" class="py-5">
     <div class="container">
         <h2 class="d-flex align-items-center text-dark text-center fw-bold">Let's Message Us</h2>
-        <h5 class="text-center mb-5">Konsultasikan Kebutuhan Anda Dengan Admin Official WhatsApp Kami</h5>
+        <h5 class="text-center mb-5">Konsultasikan Kebutuhan Anda Hanya Dengan Admin Official WhatsApp Kami</h5>
         <a class="text-center d-flex justify-content-center" href="{{ 'https://wa.me/' . $wa_utama }}">
             <button type="button" class="shadow btn btn-secondary btn-succes__landing-page d-flex align-items-center btn-lg">
                 <i class="ti ti-brand-whatsapp fs-6 me-2"></i>
