@@ -19,7 +19,8 @@
                 <a class="navbar-brand" href="{{ route('home') }}">
                     <img src="{{ asset('images/logos/xuzu.svg') }}" alt="Logo Xuzu" width="110">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -28,13 +29,16 @@
                             <a class="nav-link" href="{{ route('home') }}">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Collection
                             </a>
                             <ul class="dropdown-menu dropdown-colection p-0">
                                 <li><a class="dropdown-item" href="{{ route('landingPage.xuzu') }}">Xuzu Store</a></li>
-                                <li><a class="dropdown-item" href="{{ route('landingPage.bintangKonveksi') }}">Bintang Konveksi</a></li>
-                                <li><a class="dropdown-item" href="{{ route('landingPage.anekaSlempang') }}">Aneka Slempang</a></li>
+                                <li><a class="dropdown-item" href="{{ route('landingPage.bintangKonveksi') }}">Bintang
+                                        Konveksi</a></li>
+                                <li><a class="dropdown-item" href="{{ route('landingPage.anekaSlempang') }}">Aneka
+                                        Slempang</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -67,7 +71,7 @@
                                 <ul class="fw-bold">
                                     <li><a href="{{ route('landingPage.xuzu') }}">Xuzu Store</a></li>
                                     <li><a href="{{ route('landingPage.bintangKonveksi') }}">Bintang Konveksi</a></li>
-                                    <li><a href="{{  route('landingPage.anekaSlempang') }}">Aneka Slempang</a></li>
+                                    <li><a href="{{ route('landingPage.anekaSlempang') }}">Aneka Slempang</a></li>
                                 </ul>
                             </div>
                             <div class="col-md-6 col-lg-4">
@@ -82,45 +86,50 @@
                                 <h4 class="mb-2 mb-md-3">Social Media</h4>
                                 <div class="d-flex align-items-center">
                                     <div class="icon-sosmed me-2">
-                                        <img src="{{ asset('images/logos/instagram.svg') }}" alt="Logo Instagram" width="40">
+                                        <img src="{{ asset('images/logos/instagram.svg') }}" alt="Logo Instagram"
+                                            width="40">
                                     </div>
                                     <div class="text-sosmed">
-                                        @foreach($instagram as $item)
-                                        <a class="d-block fw-bold" href="#">{{ '@' . $item }}</a>
+                                        @foreach ($instagram as $item)
+                                            <a class="d-block fw-bold" href="#">{{ '@' . $item }}</a>
                                         @endforeach
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center mt-2">
                                     <div class="icon-sosmed me-2">
-                                        <img src="{{ asset('images/logos/facebook.svg') }}" alt="Logo Facebook" width="40">
+                                        <img src="{{ asset('images/logos/facebook.svg') }}" alt="Logo Facebook"
+                                            width="40">
                                     </div>
                                     <div class="text-sosmed">
-                                        @foreach($facebook as $item)
-                                        <a class="d-block fw-bold" href="#">{{ '@' . $item }}</a>
+                                        @foreach ($facebook as $item)
+                                            <a class="d-block fw-bold" href="#">{{ '@' . $item }}</a>
                                         @endforeach
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center mt-2">
                                     <div class="icon-sosmed me-2">
-                                        <img src="{{ asset('images/logos/tiktok.svg') }}" alt="Logo TikTok" width="40">
+                                        <img src="{{ asset('images/logos/tiktok.svg') }}" alt="Logo TikTok"
+                                            width="40">
                                     </div>
                                     <div class="text-sosmed">
-                                        @foreach($tiktok as $item)
-                                        <a class="d-block fw-bold" href="#">{{ '@' . $item }}</a>
+                                        @foreach ($tiktok as $item)
+                                            <a class="d-block fw-bold" href="#">{{ '@' . $item }}</a>
                                         @endforeach
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-4">
                                 <h4 class="mb-2 mb-md-3">Location</h4>
-                                <a class="d-block container-lokasi rounded overflow-hidden" href="https://maps.app.goo.gl/QQNvmjtQiHF9bXrp8" target="_blank" rel="noopener">
+                                <a class="d-block container-lokasi rounded overflow-hidden"
+                                    href="https://maps.app.goo.gl/QQNvmjtQiHF9bXrp8" target="_blank" rel="noopener">
                                     <img src="{{ asset('images/backgrounds/maps-lokasi.png') }}" alt="">
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <p class="text-center mb-0 fw-bold text-haki">Copyright © 2023 PT. Bintang Konveksi Indo, All rights reserved</p>
+                <p class="text-center mb-0 fw-bold text-haki">Copyright © 2023 PT. Bintang Konveksi Indo, All rights
+                    reserved</p>
             </div>
         </div>
     </footer>
@@ -134,6 +143,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="{{ asset('js/navbar-helper.js') }}"></script>
     <script src="{{ asset('js/swiper-handler.js') }}"></script>
+    <script src="{{ asset('js/detail.js') }}"></script>
 </body>
 
 </html>

@@ -109,14 +109,26 @@ header {
 /* --------------------------------HERO-------------------------------- */
 #hero {
     background-color: #FFF9EE;
-    height: 75vh;
+    height: 70vh;
+}
+
+#hero .title::after {
+    content: '';
+    background-image: url(../images/backgrounds/bg-title.png);
+    width: 100px;
+    display: block;
+}
+
+/* #hero .title {
+    width: 100%;
+    height: 45px;
 }
 
 #hero .bg-title {
-   width: 20%;
-   height: 45px;
+   width: 23%;
+   height: 100%;
    z-index: 1;
-   margin-top: 1px;
+   border-radius: 23px;
 }
 
 #hero .bg-title img {
@@ -127,8 +139,8 @@ header {
 }
 
 #hero h1 {
-    z-index: 1;
-}
+    z-index: 2;
+} */
 
 #hero .swiper {
     width: 100%;
@@ -258,6 +270,49 @@ header {
     background-color: #ffffff !important;
 }
 
+/* --------------------------------DETAIL PRODUCT-------------------------------- */
+
+
+.product-description {
+    background-color: #d4e5e7 !important;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    height: auto;
+    width: 400px;
+    overflow: hidden; /* Menghindari teks melewati batas container */
+    text-overflow: ellipsis; /* Menambahkan tanda elipsis (...) jika teks terlalu panjang */
+    white-space: nowrap; /* Mencegah teks melanjutkan ke baris berikutnya */
+    /* margin-top: 10px; */
+
+
+}
+
+.product-full {
+    white-space: normal; /* Memungkinkan teks untuk melanjutkan ke baris berikutnya */
+}
+
+
+.product-button {
+    display: flex;
+    justify-content: right;
+    margin-bottom: 10px;
+    height: auto;
+}
+
+.produk-img {
+    width: 530px;
+    height: 412px;
+}
+
+
+.show-more {
+    float: right;
+    margin-top: 10px;
+}
+
+
+
+
 /* --------------------------------TESTIMONI-------------------------------- */
 #testimoni {
     background-color: #f4f1da;
@@ -373,7 +428,7 @@ header {
     }
 
     #hero {
-        height: 55vh;
+        height: 45vh;
     }
 
     #hero .swiper {
@@ -410,4 +465,6 @@ header {
     .swiper {
         height: 210px;
     }
+
+
 }
