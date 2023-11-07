@@ -8,7 +8,7 @@
         <!-- Header Table -->
         <div class="d-flex align-items-center justify-content-between mb-9">
             <h5 class="card-title fw-semibold mb-0">Smart Buy</h5>
-            <a href="#" class="btn btn-primary fw-semibold" data-bs-toggle="modal" data-bs-target="#tambahKontenModalSmartbuy"><i class="ti ti-plus fw-semibold me-2"></i>Tambah List</a>
+            <a href="#" class="btn btn-primary fw-semibold" data-bs-toggle="modal" data-bs-target="#tambahKontenSmartBuyModal"><i class="ti ti-plus fw-semibold me-2"></i>Tambah List</a>
         </div>
         <!-- Data Table -->
         <div class="table-responsive">
@@ -55,7 +55,7 @@
                             </p>
                         </td>
                         <td class="border-bottom-0">
-                            <button type="button" class="btn btn-warning m-1" id="buttonEdit" data-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#editKontenModalSmartbuy">
+                            <button type="button" class="btn btn-warning m-1" id="buttonEdit" data-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#editKontenSmartBuyModal">
                                 <i class="ti ti-edit"></i>
                             </button>
                             <form action="{{ route('smartbuyAdmin.destroy', $item->id) }}" method="POST">
@@ -71,16 +71,20 @@
                     @endif
                 </tbody>
             </table>
+            <!-- Pagination -->
+            <div class="d-flex justify-content-end">
+                {!! $smartBuy->links() !!}
+            </div>
         </div>
     </div>
 </div>
 
 <!-- Create Modal Konten -->
-<div class="modal fade" id="tambahKontenModalSmartbuy" tabindex="-1" aria-labelledby="tambahKontenModalLabel" aria-hidden="true">
+<div class="modal fade" id="tambahKontenSmartBuyModal" tabindex="-1" aria-labelledby="tambahKontenSmartBuyModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="tambahKontenModalLabel">Tambah Konten</h5>
+                <h5 class="modal-title" id="tambahKontenSmartBuyModalLabel">Tambah Konten</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="createForm" action="{{ route('smartbuyAdmin.store') }}" method="POST" enctype="multipart/form-data">
@@ -111,14 +115,14 @@
 
 @if (count($smartBuy))
 <!-- Edit Modal Konten -->
-<div class="modal fade" id="editKontenModalSmartbuy" tabindex="-1" aria-labelledby="editKontenModalLabel" aria-hidden="true">
+<div class="modal fade" id="editKontenSmartBuyModal" tabindex="-1" aria-labelledby="editKontenSmartBuyModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editKontenModalLabel">Edit Konten</h5>
+                <h5 class="modal-title" id="editKontenSmartBuyModalLabel">Edit Konten</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="updateFormKontenSmartbuy" method="POST">
+            <form id="updateFormKontenSmartBuy" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="modal-body">

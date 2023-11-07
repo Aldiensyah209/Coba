@@ -4,8 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login</title>
-  <link rel="shortcut icon" type="image/png" href="{{ asset('images/logos/favicon.png') }}" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>Login Admin</title>
+  <link rel="shortcut icon" type="image/png" href="{{ asset('images/logos/favicon32.png') }}" />
   <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}" />
 </head>
 
@@ -25,7 +26,7 @@
                   @csrf
                   @method('POST')
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label @error('name') is-invalid @enderror">Username</label>
+                    <label for="exampleInputName" class="form-label @error('name') is-invalid @enderror">Username</label>
                     <input type="text" class="form-control" id="inputName" name="name">
                     <div class="invalid-feedback">@error('name') {{$message}} @enderror</div>
                   </div>
@@ -43,7 +44,7 @@
                     </div>
                   </div>
                   @if(session('error'))
-                  <div class="alert alert-danger">
+                  <div class="alert alert-danger mb-4">
                     <b>Opps!</b> {{session('error')}}
                   </div>
                   @endif

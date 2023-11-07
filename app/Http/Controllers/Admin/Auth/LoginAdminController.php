@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -21,12 +21,12 @@ class LoginAdminController extends Controller
             'password' => ['required'],
         ]);
 
-        $remember_me = $request->has('remember_checkbox') ? true : false; 
+        $remember_me = $request->has('remember_checkbox') ? true : false;
 
         if (Auth::attempt($credentials, $remember_me)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            return redirect()->intended('admin/dashboard');
         }
 
         Session::flash('error', 'Username atau Password Salah');

@@ -1,15 +1,17 @@
 $(document).ready(function (e) {
-    const SITEURL = window.location.origin;
+    const SITEURL = window.location.origin + "/admin";
     let dataId;
     let valuesTambahModal = [
-        "BajuModal",
-        "BajuModalBK",
-        "BajuModalAS",
-        "KontenModal",
-        "KontenModalAbout",
-        "KontenModalSmartbuy",
-        "KontenModalTestimoni",
-        "SosmedModal"
+        "BajuXuzuModal",
+        "BajuBintangKonveksiModal",
+        "BajuAnekaSlempangModal",
+        "KontenHomeModal",
+        "KontenHomeVideoModal",
+        "KontenAboutModal",
+        "KontenSmartBuyModal",
+        "KontenTestimoniModal",
+        "SosmedModal",
+        "BeritaModal",
     ];
 
     $("tbody tr td #buttonEdit").on("click", function () {
@@ -24,7 +26,7 @@ $(document).ready(function (e) {
     });
 
     // UPDATE XUZU
-    $("#editBajuModal").on("show.bs.modal", function (e) {
+    $("#editBajuXuzuModal").on("show.bs.modal", function (e) {
         const id = $(e.relatedTarget).data("id");
 
         $.ajax({
@@ -45,7 +47,7 @@ $(document).ready(function (e) {
         });
     });
 
-    $("#updateForm").on("submit", function (e) {
+    $("#updateFormXuzu").on("submit", function (e) {
         e.preventDefault();
 
         const formData = new FormData(this);
@@ -64,8 +66,8 @@ $(document).ready(function (e) {
             contentType: false,
             processData: false,
             success: function (data) {
-                $("#updateForm").trigger("reset");
-                $("#editBajuModal").modal("hide");
+                $("#updateFormXuzu").trigger("reset");
+                $("#editBajuXuzuModal").modal("hide");
 
                 location.reload();
             },
@@ -76,7 +78,7 @@ $(document).ready(function (e) {
     });
 
     // UPDATE BINTANG KONVEKSI
-    $("#editBajuModalBK").on("show.bs.modal", function (e) {
+    $("#editBajuBintangKonveksiModal").on("show.bs.modal", function (e) {
         const id = $(e.relatedTarget).data("id");
 
         $.ajax({
@@ -97,7 +99,7 @@ $(document).ready(function (e) {
         });
     });
 
-    $("#updateFormBK").on("submit", function (e) {
+    $("#updateFormBintangKonveksi").on("submit", function (e) {
         e.preventDefault();
 
         const formData = new FormData(this);
@@ -116,8 +118,8 @@ $(document).ready(function (e) {
             contentType: false,
             processData: false,
             success: function (data) {
-                $("#updateFormBK").trigger("reset");
-                $("#editBajuModalBK").modal("hide");
+                $("#updateFormBintangKonveksi").trigger("reset");
+                $("#editBajuBintangKonveksiModal").modal("hide");
 
                 location.reload();
             },
@@ -128,7 +130,7 @@ $(document).ready(function (e) {
     });
 
     // UPDATE ANEKA SLEMPANG
-    $("#editBajuModalAS").on("show.bs.modal", function (e) {
+    $("#editBajuAnekaSlempangModal").on("show.bs.modal", function (e) {
         const id = $(e.relatedTarget).data("id");
 
         $.ajax({
@@ -149,7 +151,7 @@ $(document).ready(function (e) {
         });
     });
 
-    $("#updateFormAS").on("submit", function (e) {
+    $("#updateFormAnekaSlempang").on("submit", function (e) {
         e.preventDefault();
 
         const formData = new FormData(this);
@@ -168,8 +170,8 @@ $(document).ready(function (e) {
             contentType: false,
             processData: false,
             success: function (data) {
-                $("#updateFormAS").trigger("reset");
-                $("#editBajuModalAS").modal("hide");
+                $("#updateFormAnekaSlempang").trigger("reset");
+                $("#editBajuAnekaSlempangModal").modal("hide");
 
                 location.reload();
             },
@@ -180,11 +182,11 @@ $(document).ready(function (e) {
     });
 
     // UPDATE HOME
-    $("#editKontenModal").on("show.bs.modal", function (e) {
+    $("#editKontenHomeModal").on("show.bs.modal", function (e) {
         const id = $(e.relatedTarget).data("id");
 
         $.ajax({
-            url: SITEURL + "/home-content/" + id,
+            url: SITEURL + "/home/" + id,
             type: "GET",
             dataType: "json",
             cache: false,
@@ -200,12 +202,12 @@ $(document).ready(function (e) {
         });
     });
 
-    $("#updateFormKonten").on("submit", function (e) {
+    $("#updateFormKontenHome").on("submit", function (e) {
         e.preventDefault();
 
         const formData = new FormData(this);
         const token = $('meta[name="csrf-token"]').attr("content");
-        const url = SITEURL + "/home-content/update/" + dataId;
+        const url = SITEURL + "/home/update/" + dataId;
 
         $.ajax({
             type: "POST",
@@ -218,8 +220,57 @@ $(document).ready(function (e) {
             contentType: false,
             processData: false,
             success: function (data) {
-                $("#updateFormKonten").trigger("reset");
-                $("#editKontenModal").modal("hide");
+                $("#updateFormKontenHome").trigger("reset");
+                $("#editKontenHomeModal").modal("hide");
+
+                location.reload();
+            },
+            error: function (data) {
+                alert("Error: " + data.responseJSON.message);
+            },
+        });
+    });
+
+    // UPDATE HOME VIDEO
+    $("#editKontenHomeVideoModal").on("show.bs.modal", function (e) {
+        const id = $(e.relatedTarget).data("id");
+
+        $.ajax({
+            url: SITEURL + "/home-video/" + id,
+            type: "GET",
+            dataType: "json",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                $("#edit_tautan").val(data.tautan);
+            },
+            error: function (data) {
+                alert("Error: " + data.responseJSON.message);
+            },
+        });
+    });
+
+    $("#updateFormKontenHomeVideo").on("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const token = $('meta[name="csrf-token"]').attr("content");
+        const url = SITEURL + "/home-video/update/" + dataId;
+
+        $.ajax({
+            type: "POST",
+            header: {
+                "X-CSRF-TOKEN": token,
+            },
+            url: url,
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                $("#updateFormKontenHomeVideo").trigger("reset");
+                $("#editKontenHomeVideoModal").modal("hide");
 
                 location.reload();
             },
@@ -230,7 +281,7 @@ $(document).ready(function (e) {
     });
 
     // UPDATE ABOUT
-    $("#editKontenModalAbout").on("show.bs.modal", function (e) {
+    $("#editKontenAboutModal").on("show.bs.modal", function (e) {
         const id = $(e.relatedTarget).data("id");
 
         $.ajax({
@@ -269,7 +320,7 @@ $(document).ready(function (e) {
             processData: false,
             success: function (data) {
                 $("#updateFormKontenAbout").trigger("reset");
-                $("#editKontenModalAbout").modal("hide");
+                $("#editKontenAboutModal").modal("hide");
 
                 location.reload();
             },
@@ -280,7 +331,7 @@ $(document).ready(function (e) {
     });
 
     // UPDATE SMARTBUY
-    $("#editKontenModalSmartbuy").on("show.bs.modal", function (e) {
+    $("#editKontenSmartBuyModal").on("show.bs.modal", function (e) {
         const id = $(e.relatedTarget).data("id");
 
         $.ajax({
@@ -300,7 +351,7 @@ $(document).ready(function (e) {
         });
     });
 
-    $("#updateFormKontenSmartbuy").on("submit", function (e) {
+    $("#updateFormKontenSmartBuy").on("submit", function (e) {
         e.preventDefault();
 
         const formData = new FormData(this);
@@ -318,8 +369,8 @@ $(document).ready(function (e) {
             contentType: false,
             processData: false,
             success: function (data) {
-                $("#updateFormKontenSmartbuy").trigger("reset");
-                $("#editKontenModalSmartbuy").modal("hide");
+                $("#updateFormKontenSmartBuy").trigger("reset");
+                $("#editKontenSmartBuyModal").modal("hide");
 
                 location.reload();
             },
@@ -330,7 +381,7 @@ $(document).ready(function (e) {
     });
 
     // UPDATE TESTIMONI
-    $("#editKontenModalTestimoni").on("show.bs.modal", function (e) {
+    $("#editKontenTestimoniModal").on("show.bs.modal", function (e) {
         const id = $(e.relatedTarget).data("id");
 
         $.ajax({
@@ -368,7 +419,7 @@ $(document).ready(function (e) {
             processData: false,
             success: function (data) {
                 $("#updateFormKontenTestimoni").trigger("reset");
-                $("#editKontenModalTestimoni").modal("hide");
+                $("#editKontenTestimoniModal").modal("hide");
 
                 location.reload();
             },
@@ -396,12 +447,12 @@ $(document).ready(function (e) {
                 $("#edit_tiktok").val(data.tiktok);
 
                 if (data.isPriority == 1) {
-                    $("#edit_priority").prop('checked', true);
+                    $("#edit_priority").prop("checked", true);
                 } else {
-                    $("#edit_priority").prop('checked', false);
+                    $("#edit_priority").prop("checked", false);
                 }
 
-                console.log(data)
+                console.log(data);
             },
             error: function (data) {
                 alert("Error: " + data.responseJSON.message);
@@ -429,6 +480,56 @@ $(document).ready(function (e) {
             success: function (data) {
                 $("#updateFormSosmed").trigger("reset");
                 $("#editSosmedModal").modal("hide");
+
+                location.reload();
+            },
+            error: function (data) {
+                alert("Error: " + data.responseJSON.message);
+            },
+        });
+    });
+
+    // UPDATE BERITA
+    $("#editBeritaModal").on("show.bs.modal", function (e) {
+        const id = $(e.relatedTarget).data("id");
+
+        $.ajax({
+            url: SITEURL + "/berita/" + id,
+            type: "GET",
+            dataType: "json",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                $("#edit_judul").val(data.judul);
+                $("#edit_tautan").val(data.tautan);
+            },
+            error: function (data) {
+                alert("Error: " + data.responseJSON.message);
+            },
+        });
+    });
+
+    $("#updateFormBerita").on("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const token = $('meta[name="csrf-token"]').attr("content");
+        const url = SITEURL + "/berita/update/" + dataId;
+
+        $.ajax({
+            type: "POST",
+            header: {
+                "X-CSRF-TOKEN": token,
+            },
+            url: url,
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                $("#updateFormBerita").trigger("reset");
+                $("#editBeritaModal").modal("hide");
 
                 location.reload();
             },

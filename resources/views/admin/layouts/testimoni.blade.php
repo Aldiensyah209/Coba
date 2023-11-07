@@ -8,7 +8,7 @@
         <!-- Header Table -->
         <div class="d-flex align-items-center justify-content-between mb-9">
             <h5 class="card-title fw-semibold mb-0">Testimoni</h5>
-            <a href="#" class="btn btn-primary fw-semibold" data-bs-toggle="modal" data-bs-target="#tambahKontenModalTestimoni"><i class="ti ti-plus fw-semibold me-2"></i>Tambah
+            <a href="#" class="btn btn-primary fw-semibold" data-bs-toggle="modal" data-bs-target="#tambahKontenTestimoniModal"><i class="ti ti-plus fw-semibold me-2"></i>Tambah
                 Testimoni</a>
         </div>
         <!-- Data Table -->
@@ -50,7 +50,7 @@
                             </p>
                         </td>
                         <td class="border-bottom-0">
-                            <button type="button" class="btn btn-warning m-1" id="buttonEdit" data-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#editKontenModalTestimoni">
+                            <button type="button" class="btn btn-warning m-1" id="buttonEdit" data-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#editKontenTestimoniModal">
                                 <i class="ti ti-edit"></i>
                             </button>
                             <form action="{{ route('testimoniAdmin.destroy', $item->id) }}" method="POST">
@@ -66,16 +66,20 @@
                     @endif
                 </tbody>
             </table>
+            <!-- Pagination -->
+            <div class="d-flex justify-content-end">
+                {!! $testimoni->links() !!}
+            </div>
         </div>
     </div>
 </div>
 
 <!-- Create Modal Konten -->
-<div class="modal fade" id="tambahKontenModalTestimoni" tabindex="-1" aria-labelledby="tambahKontenModalLabel" aria-hidden="true">
+<div class="modal fade" id="tambahKontenTestimoniModal" tabindex="-1" aria-labelledby="tambahKontenTestimoniModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="tambahKontenModalLabel">Tambah Testimoni</h5>
+                <h5 class="modal-title" id="tambahKontenTestimoniModalLabel">Tambah Testimoni</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="createForm" action="{{ route('testimoniAdmin.store') }}" method="POST" enctype="multipart/form-data">
@@ -103,11 +107,11 @@
 
 @if (count($testimoni))
 <!-- Edit Modal Konten -->
-<div class="modal fade" id="editKontenModalTestimoni" tabindex="-1" aria-labelledby="editKontenModalLabel" aria-hidden="true">
+<div class="modal fade" id="editKontenTestimoniModal" tabindex="-1" aria-labelledby="editKontenTestimoniModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editKontenModalLabel">Edit Testimoni</h5>
+                <h5 class="modal-title" id="editKontenTestimoniModalLabel">Edit Testimoni</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="updateFormKontenTestimoni" method="POST">

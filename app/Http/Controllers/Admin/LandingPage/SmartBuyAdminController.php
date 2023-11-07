@@ -16,8 +16,7 @@ class SmartBuyAdminController extends Controller
 
     public function index()
     {
-        $smartBuy = SmartBuy::all();
-
+        $smartBuy = SmartBuy::paginate(5);
         return view('admin.layouts.smartbuy', compact('smartBuy'));
     }
 
@@ -27,10 +26,10 @@ class SmartBuyAdminController extends Controller
             'judul' => 'required',
             'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'deskripsi' => 'required'
-
         ]);
 
         $imageName = date('YmdHis') . "." . $request->gambar->Extension();
+        
         $request->gambar->move(public_path('images/post/smart_buy/'), $imageName);
 
         $smartBuy = new SmartBuy([
@@ -38,8 +37,6 @@ class SmartBuyAdminController extends Controller
             'gambar' => $imageName,
             'deskripsi' => $request->get('deskripsi'),
         ]);
-
-
 
         $smartBuy->save();
 

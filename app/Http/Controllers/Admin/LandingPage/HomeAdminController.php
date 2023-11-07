@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\LandingPage;
 use App\Http\Controllers\Controller;
 use App\Models\Home;
 use App\Models\HomeImage;
+use App\Models\HomeVideo;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
@@ -18,10 +19,12 @@ class HomeAdminController extends Controller
     public function index()
     {
         $konten = Home::all();
-        $gambar = HomeImage::all();
-        return view('admin.layouts.home', compact('konten', 'gambar'));
+        $gambar = HomeImage::paginate(3);
+        $video = HomeVideo::all();
+        return view('admin.layouts.home', compact('konten', 'gambar', 'video'));
     }
 
+    //------------------------------HOME KONTEN---------------------------------
     public function storeKonten(Request $request)
     {
         $request->validate([
@@ -70,6 +73,7 @@ class HomeAdminController extends Controller
         return redirect()->back()->with('success', 'Konten berhasil dihapus.');
     }
 
+    //------------------------------GAMBAR SLIDER---------------------------------
     public function storeGambar(Request $request)
     {
         $request->validate([
@@ -97,5 +101,50 @@ class HomeAdminController extends Controller
         File::delete(public_path('images/post/hero/' . $gambar->gambar));
 
         return redirect()->back()->with('success', 'Gambar berhasil dihapus.');
+    }
+
+    //------------------------------VIDEO SLIDER---------------------------------
+    public function storeVideo(Request $request)
+    {
+        $request->validate([
+            'tautan' => 'required',
+        ]);
+
+        $video = new HomeVideo([
+            'tautan' => $request->get('tautan'),
+        ]);
+
+        $video->save();
+
+        return redirect()->back()->with('success', 'Video berhasil ditambahkan.');
+    }
+
+    public function getByIdVideo($id)
+    {
+        $video = HomeVideo::findOrFail($id);
+        return response()->json($video, 200);
+    }
+
+    public function updateVideo(Request $request, $id)
+    {
+        $request->validate([
+            'edit_tautan' => 'required',
+        ]);
+
+        $video = HomeVideo::find($id);
+
+        $video->tautan = $request->get('edit_tautan');
+
+        $video->save();
+
+        return response()->json($video, 200);
+    }
+
+    public function destroyVideo($id)
+    {
+        $video = HomeVideo::findOrFail($id);
+        $video->delete();
+
+        return redirect()->back()->with('success', 'Video berhasil dihapus.');
     }
 }
