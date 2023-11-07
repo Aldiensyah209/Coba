@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Xuzu;
 use App\Models\BintangKonveksi;
 use App\Http\Controllers\Controller;
+use App\Models\AnekaSlempang;
 use App\Models\Testimoni;
 
 class DashboardAdminController extends Controller
@@ -20,6 +21,8 @@ class DashboardAdminController extends Controller
         $xuzu = Xuzu::count();
         $bintangKonveksi = BintangKonveksi::count();
         $testimoni = Testimoni::count();
-        return view('admin.layouts.dashboard', compact('xuzu', 'bintangKonveksi', 'testimoni'));
+        $anekaSlempang = AnekaSlempang::count();
+        
+        return view('admin.layouts.dashboard', compact('xuzu', 'bintangKonveksi', 'anekaSlempang', 'testimoni'));
     }
 }

@@ -7,7 +7,7 @@
     <!-- Header Table -->
     <div class="d-flex align-items-center justify-content-between mb-9">
       <h5 class="card-title fw-semibold mb-0">Produk Aneka Slempang</h5>
-      <a href="#" class="btn btn-primary fw-semibold" data-bs-toggle="modal" data-bs-target="#tambahBajuModalAS"><i class="ti ti-plus fw-semibold me-2"></i>Tambah Produk</a>
+      <a href="#" class="btn btn-primary fw-semibold" data-bs-toggle="modal" data-bs-target="#tambahBajuAnekaSlempangModal"><i class="ti ti-plus fw-semibold me-2"></i>Tambah Produk</a>
     </div>
     <!-- Data Table -->
     <div class="table-responsive">
@@ -58,7 +58,7 @@
               <p class="mb-0 fw-normal text-wrap" style="width: 14rem;">{{ Str::limit($item->deskripsi_as, 45) }}</p>
             </td>
             <td class="border-bottom-0">
-              <button type="button" class="btn btn-warning m-1" id="buttonEdit" data-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#editBajuModalAS">
+              <button type="button" class="btn btn-warning m-1" id="buttonEdit" data-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#editBajuAnekaSlempangModal">
                 <i class="ti ti-edit"></i>
               </button>
               <form action="{{ route('as.destroy', $item->id) }}" method="POST">
@@ -83,11 +83,11 @@
 </div>
 
 <!-- Create Modal -->
-<div class="modal fade" id="tambahBajuModalAS" tabindex="-1" aria-labelledby="tambahBajuModalLabel" aria-hidden="true">
+<div class="modal fade" id="tambahBajuAnekaSlempangModal" tabindex="-1" aria-labelledby="tambahBajuAnekaSlempangModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="tambahBajuModalLabel">Tambah Produk</h5>
+        <h5 class="modal-title" id="tambahBajuAnekaSlempangModalLabel">Tambah Produk</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form id="createForm" action="{{ route('as.store') }}" method="POST" enctype="multipart/form-data">
@@ -122,14 +122,14 @@
 
 @if(count($produk))
 <!-- Edit Modal -->
-<div class="modal fade" id="editBajuModalAS" tabindex="-1" aria-labelledby="editBajuModalLabel" aria-hidden="true">
+<div class="modal fade" id="editBajuAnekaSlempangModal" tabindex="-1" aria-labelledby="editBajuAnekaSlempangModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editBajuModalLabel">Edit Produk</h5>
+        <h5 class="modal-title" id="editBajuAnekaSlempangModalLabel">Edit Produk</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form id="updateFormAS" method="POST" enctype="multipart/form-data">
+      <form id="updateFormAnekaSlempang" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="modal-body">

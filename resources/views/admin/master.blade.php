@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin | @yield('title')</title>
-    <link rel="shortcut icon" type="image/png" href="{{ asset('images/logos/favicon.png') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/logos/favicon32.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/custom-styles.css') }}" />
 </head>
@@ -35,7 +35,7 @@
                             <span class="hide-menu">Home</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Request::is('*dashboard*') ? 'active' : '' }}" href="{{ route('dashboard') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('*admin/dashboard*') ? 'active' : '' }}" href="{{ route('dashboard') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-layout-dashboard"></i>
                                 </span>
@@ -48,7 +48,7 @@
                             <span class="hide-menu">PRODUCT</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Request::is('*xuzu*') ? 'active' : '' }}" href="{{ route('xuzu.index') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('*admin/xuzu*') ? 'active' : '' }}" href="{{ route('xuzu.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-shirt"></i>
                                 </span>
@@ -56,7 +56,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Request::is('*bintang-konveksi*') ? 'active' : '' }}" href="{{ route('bk.index') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('*admin/bintang-konveksi*') ? 'active' : '' }}" href="{{ route('bk.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-sock"></i>
                                 </span>
@@ -64,9 +64,9 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Request::is('*aneka-slempang*') ? 'active' : '' }}" href="{{ route('as.index') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('*admin/aneka-slempang*') ? 'active' : '' }}" href="{{ route('as.index') }}" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-hanger-2"></i>
+                                    <i class="ti ti-tie"></i>
                                 </span>
                                 <span class="hide-menu">Aneka Slempang</span>
                             </a>
@@ -77,7 +77,7 @@
                             <span class="hide-menu">LANDING PAGE</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Request::is('*home*') ? 'active' : '' }}" href="{{ route('homeAdmin.index') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('*admin/home*') ? 'active' : '' }}" href="{{ route('homeAdmin.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-home"></i>
                                 </span>
@@ -85,7 +85,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Request::is('*about*') ? 'active' : '' }}" href="{{ route('aboutAdmin.index') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('*admin/about*') ? 'active' : '' }}" href="{{ route('aboutAdmin.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-info-circle"></i>
                                 </span>
@@ -93,7 +93,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Request::is('*smartbuy*') ? 'active' : '' }}" href="{{ route('smartbuyAdmin.index') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('*admin/smartbuy*') ? 'active' : '' }}" href="{{ route('smartbuyAdmin.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-building-store"></i>
                                 </span>
@@ -101,7 +101,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Request::is('*testimoni*') ? 'active' : '' }}" href="{{ route('testimoniAdmin.index') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('*admin/testimoni*') ? 'active' : '' }}" href="{{ route('testimoniAdmin.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-friends"></i>
                                 </span>
@@ -109,7 +109,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Request::is('*galeri*') ? 'active' : '' }}" href="{{ route('galeri.index') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('*admin/galeri*') ? 'active' : '' }}" href="{{ route('galeri.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-photo"></i>
                                 </span>
@@ -117,11 +117,19 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Request::is('*social-media*') ? 'active' : '' }}" href="{{ route('sosmed.index') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('*admin/social-media*') ? 'active' : '' }}" href="{{ route('sosmed.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-device-mobile-message"></i>
                                 </span>
                                 <span class="hide-menu">Social Media</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link {{ Request::is('*admin/berita*') ? 'active' : '' }}" href="{{ route('berita.index') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-news"></i>
+                                </span>
+                                <span class="hide-menu">Berita</span>
                             </a>
                         </li>
                     </ul>
@@ -151,9 +159,9 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                                     <div class="message-body">
-                                        <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                                        <a href="{{ route('profile') }}" class="d-flex align-items-center gap-2 dropdown-item">
                                             <i class="ti ti-user fs-6"></i>
-                                            <p class="mb-0 fs-3">{{ Str::title(auth()->user()->name) }}</p>
+                                            <p class="mb-0 fs-3">Profile</p>
                                         </a>
                                         <a href="{{ route('logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                                     </div>
@@ -178,6 +186,14 @@
     <script src="{{ asset('js/app.min.js') }}"></script>
     <script src="{{ asset('libs/simplebar/dist/simplebar.js') }}"></script>
     <script src="{{ asset('js/modal-handler.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#formProfile').on('input change', function(e) {
+                e.preventDefault();
+                $('#save').attr('disabled', false);
+            });
+        });
+    </script>
 </body>
 
 </html>

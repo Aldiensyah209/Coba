@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AnekaSlempang;
 use App\Models\BintangKonveksi;
 use App\Models\SocialMedia;
+use App\Models\User;
 use App\Models\Xuzu;
 use Illuminate\Http\Request;
 
@@ -35,6 +36,8 @@ class DetailProductController extends Controller
         $instagram = SocialMedia::pluck('instagram');
         $facebook = SocialMedia::pluck('facebook');
         $tiktok = SocialMedia::pluck('tiktok');
+        $whatsappPriority = SocialMedia::where('isPriority', 1)->first();
+        $email = User::pluck('email')->first();
 
         return view('layouts.detail_product', compact(
             'productDetail',
@@ -43,6 +46,8 @@ class DetailProductController extends Controller
             'instagram',
             'facebook',
             'tiktok',
+            'whatsappPriority',
+            'email',
         ));
     }
 }

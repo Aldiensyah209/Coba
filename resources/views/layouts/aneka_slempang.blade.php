@@ -1,9 +1,9 @@
 @extends('index')
 @section('kontent')
     <!-- Product List -->
-    <div id="product-list">
+    <div id="product-list" class="my-5">
         <div class="container">
-            <h5 class="text-center text-headline mt-4">ANEKA SLEMPANG</h5>
+            <h5 class="text-center text-headline">ANEKA SLEMPANG</h5>
             <h2 class="text-center text-headline-desc mb-5">Our Products</h2>
             <div class="row mb-5 g-4">
                 @foreach ($produk as $item)
@@ -20,7 +20,7 @@
                             <div class="card-footer px-3 pb-3 pt-0 d-flex">
                                 <a href="{{ route('product_detail', ['product' => 'aneka-slempang', 'id' => $item->id]) }}"
                                     class="btn btn-primary btn-primary__landing-page me-2">Detail</a>
-                                <a href="#"
+                                <a href="{{ 'https://wa.me/' . $whatsappPriority->whatsapp }}"
                                     class="btn btn-primary btn-succes__landing-page d-flex align-items-center">
                                     <i class="ti ti-brand-whatsapp fs-6 me-1"></i>
                                     <span>Pesan</span>

@@ -7,7 +7,7 @@
     <!-- Header Table -->
     <div class="d-flex align-items-center justify-content-between mb-9">
       <h5 class="card-title fw-semibold mb-0">Produk Bintang Konveksi</h5>
-      <a href="#" class="btn btn-primary fw-semibold" data-bs-toggle="modal" data-bs-target="#tambahBajuModalBK"><i class="ti ti-plus fw-semibold me-2"></i>Tambah Produk</a>
+      <a href="#" class="btn btn-primary fw-semibold" data-bs-toggle="modal" data-bs-target="#tambahBajuBintangKonveksiModal"><i class="ti ti-plus fw-semibold me-2"></i>Tambah Produk</a>
     </div>
     <!-- Data Table -->
     <div class="table-responsive">
@@ -58,7 +58,7 @@
               <p class="mb-0 fw-normal text-wrap" style="width: 14rem;">{{ Str::limit($item->deskripsi_bk, 45) }}</p>
             </td>
             <td class="border-bottom-0">
-              <button type="button" class="btn btn-warning m-1" id="buttonEdit" data-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#editBajuModalBK">
+              <button type="button" class="btn btn-warning m-1" id="buttonEdit" data-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#editBajuBintangKonveksiModal">
                 <i class="ti ti-edit"></i>
               </button>
               <form action="{{ route('bk.destroy', $item->id) }}" method="POST">
@@ -83,11 +83,11 @@
 </div>
 
 <!-- Create Modal -->
-<div class="modal fade" id="tambahBajuModalBK" tabindex="-1" aria-labelledby="tambahBajuModalLabel" aria-hidden="true">
+<div class="modal fade" id="tambahBajuBintangKonveksiModal" tabindex="-1" aria-labelledby="tambahBajuBintangKonveksiModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="tambahBajuModalLabel">Tambah Produk</h5>
+        <h5 class="modal-title" id="tambahBajuBintangKonveksiModalLabel">Tambah Produk</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form id="createForm" action="{{ route('bk.store') }}" method="POST" enctype="multipart/form-data">
@@ -122,14 +122,14 @@
 
 @if(count($produk))
 <!-- Edit Modal -->
-<div class="modal fade" id="editBajuModalBK" tabindex="-1" aria-labelledby="editBajuModalLabel" aria-hidden="true">
+<div class="modal fade" id="editBajuBintangKonveksiModal" tabindex="-1" aria-labelledby="editBajuBintangKonveksiModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editBajuModalLabel">Edit Produk</h5>
+        <h5 class="modal-title" id="editBajuBintangKonveksiModalLabel">Edit Produk</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form id="updateFormBK" method="POST" enctype="multipart/form-data">
+      <form id="updateFormBintangKonveksi" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="modal-body">

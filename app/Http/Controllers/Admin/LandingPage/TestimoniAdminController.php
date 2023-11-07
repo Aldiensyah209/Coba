@@ -16,8 +16,7 @@ class TestimoniAdminController extends Controller
 
     public function index()
     {
-        $testimoni = Testimoni::all();
-
+        $testimoni = Testimoni::paginate(5);
         return view('admin.layouts.testimoni', compact('testimoni'));
     }
 
@@ -30,10 +29,10 @@ class TestimoniAdminController extends Controller
         ]);
 
         $imageName = date('YmdHis') . "." . $request->gambar->Extension();
+        
         $request->gambar->move(public_path('images/post/testimoni/'), $imageName);
 
         $testimoni = new Testimoni([
-
             'gambar' => $imageName,
             'keterangan' => $request->get('keterangan'),
         ]);
@@ -52,10 +51,8 @@ class TestimoniAdminController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-
             'edit_gambar' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'edit_keterangan' => 'required',
-
         ]);
 
         $testimoni = Testimoni::find($id);
