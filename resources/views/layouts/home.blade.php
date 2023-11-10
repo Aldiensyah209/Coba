@@ -219,9 +219,9 @@
         <div class="row">
             <div class="col-md-6 align-self-center pe-md-3">
                 <h2 class="text-headline">Partner Ekspedisi XUZU</h2>
-                <p class="mb-0 text-break fw-bold text-dark">Bekerja sama dengan seluruh ekspedisi di indonesia.
-                    Pengiriman paket melalui mitra ekspedisi terpecaya. Pastikan paketnya sampai dengan aman dan selamat
-                    smapai tujuan.</p>
+                <p class="mb-0 text-break fw-bold text-dark">Bekerja sama dengan seluruh ekspedisi di Indonesia.
+                    Pengiriman paket melalui mitra ekspedisi terpercaya. Pastikan paketnya sampai dengan aman dan selamat
+                    sampai tujuan.</p>
             </div>
             <div class="col-md-6">
                 <div class="d-flex flex-wrap">

@@ -42,7 +42,7 @@
               <p class="mb-0 fw-normal text-wrap" style="width: 14rem;">{{ Str::limit($item->deskripsi, 45) }}</p>
             </td>
             <td class="border-bottom-0">
-              <button type="button" class="btn btn-warning m-1" id="buttonEdit" data-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#editKontenModalAbout">
+              <button type="button" class="btn btn-warning m-1" id="buttonEdit" data-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#editKontenAboutModal">
                 <i class="ti ti-edit"></i>
               </button>
               <form action="{{ route('aboutAdmin.destroy', $item->id) }}" method="POST">
